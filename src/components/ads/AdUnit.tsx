@@ -33,7 +33,8 @@ function AdInner({ slot, format }: { slot?: string; format: string }) {
   }, [])
 
   if (!site.adsense.enabled) {
-    return <div className="ad-slot">광고 영역 (애드센스 승인 후 노출)</div>
+    // 승인 전에는 아무것도 노출하지 않음
+    return null
   }
 
   return (
