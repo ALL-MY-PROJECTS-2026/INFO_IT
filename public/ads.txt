@@ -1,0 +1,3 @@
+# Google AdSense 승인 후, 아래 줄의 pub-XXXXXXXXXXXXXXXX 를 본인 퍼블리셔 ID로 교체하세요.
+# ads.txt 는 필수는 아니지만 강력 권장(미승인 인벤토리 경고 방지).
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

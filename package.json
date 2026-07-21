@@ -1,0 +1,37 @@
+{
+  "name": "info-it-blog",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "IT 지식 정리 기술 블로그 — Vite + React + TypeScript + SSG(커스텀 프리렌더)",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run build:client && npm run build:server && node prerender.mjs && node scripts/generate-sitemap.mjs",
+    "build:client": "vite build --ssrManifest --outDir dist",
+    "build:server": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
+    "preview": "vite preview --outDir dist",
+    "typecheck": "tsc --noEmit",
+    "sitemap": "node scripts/generate-sitemap.mjs"
+  },
+  "dependencies": {
+    "@mdx-js/react": "^3.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@mdx-js/rollup": "^3.1.0",
+    "@shikijs/rehype": "^1.24.2",
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "rehype-autolink-headings": "^7.1.0",
+    "rehype-slug": "^6.0.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-mdx-frontmatter": "^5.0.0",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11"
+  }
+}

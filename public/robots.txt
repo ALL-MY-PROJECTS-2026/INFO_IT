@@ -1,0 +1,6 @@
+# PANCO_IT 블로그 robots.txt
+# 애드센스/검색 크롤러 전체 허용 — 승인 심사 시 크롤러 차단 금지
+User-agent: *
+Allow: /
+
+Sitemap: https://all-my-projects-2026.github.io/INFO_IT/sitemap.xml
