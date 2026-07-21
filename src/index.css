@@ -226,6 +226,28 @@ a:hover {
 .theme-toggle:active {
   transform: scale(0.92);
 }
+/* 모바일: 헤더(로고+메뉴+토글)가 좁은 화면에서 넘치지 않도록 축소 */
+@media (max-width: 560px) {
+  .site-header__inner {
+    gap: 0.4rem;
+    height: 56px;
+  }
+  .brand {
+    font-size: 1rem;
+  }
+  .nav {
+    gap: 0.05rem;
+  }
+  .nav a {
+    padding: 0.5rem 0.4rem;
+    font-size: 0.82rem;
+  }
+  .theme-toggle {
+    width: 36px;
+    height: 36px;
+    flex: none;
+  }
+}
 
 .site-footer {
   border-top: 1px solid var(--border);
