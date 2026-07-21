@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/INFO_IT/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 친근한 웹폰트: Do Hyeon(제목) · Gowun Dodum(본문) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&display=swap"
+      rel="stylesheet"
+    />
+    <title>CSR vs SSR vs SSG — SEO 관점에서 뭘 골라야 할까 — PANCO_IT</title>
+    <meta name="description" content="React 앱의 세 가지 렌더링 방식을 검색엔진 최적화 관점에서 비교하고, 블로그·콘텐츠 사이트에 적합한 선택을 정리합니다." />
+    <link rel="canonical" href="https://all-my-projects-2026.github.io/INFO_IT/posts/csr-vs-ssg-seo" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="PANCO_IT" />
+    <meta property="og:title" content="CSR vs SSR vs SSG — SEO 관점에서 뭘 골라야 할까 — PANCO_IT" />
+    <meta property="og:description" content="React 앱의 세 가지 렌더링 방식을 검색엔진 최적화 관점에서 비교하고, 블로그·콘텐츠 사이트에 적합한 선택을 정리합니다." />
+    <meta property="og:url" content="https://all-my-projects-2026.github.io/INFO_IT/posts/csr-vs-ssg-seo" />
+    <meta property="og:image" content="https://all-my-projects-2026.github.io/INFO_IT/og-default.png" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="article:published_time" content="2026-07-20" />
+    <meta property="article:modified_time" content="2026-07-20" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="CSR vs SSR vs SSG — SEO 관점에서 뭘 골라야 할까 — PANCO_IT" />
+    <meta name="twitter:description" content="React 앱의 세 가지 렌더링 방식을 검색엔진 최적화 관점에서 비교하고, 블로그·콘텐츠 사이트에 적합한 선택을 정리합니다." />
+    <meta name="twitter:image" content="https://all-my-projects-2026.github.io/INFO_IT/og-default.png" />
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"CSR vs SSR vs SSG — SEO 관점에서 뭘 골라야 할까","description":"React 앱의 세 가지 렌더링 방식을 검색엔진 최적화 관점에서 비교하고, 블로그·콘텐츠 사이트에 적합한 선택을 정리합니다.","image":"https://all-my-projects-2026.github.io/INFO_IT/og-default.png","author":{"@type":"Person","name":"Jungwoo"},"publisher":{"@type":"Organization","name":"PANCO_IT"},"datePublished":"2026-07-20","dateModified":"2026-07-20","mainEntityOfPage":{"@type":"WebPage","@id":"https://all-my-projects-2026.github.io/INFO_IT/posts/csr-vs-ssg-seo"},"keywords":"React, SEO, 렌더링, SSG"}</script>
+    <!-- FOUC 방지: 기본은 라이트 모드, 사용자가 토글로 바꾼 경우만 그 값 사용 -->
+    <script>
+      (function () {
+        try {
+          document.documentElement.dataset.theme = localStorage.getItem('theme') || 'light';
+        } catch (e) {
+          document.documentElement.dataset.theme = 'light';
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/INFO_IT/assets/index-Bjf7KwGr.js"></script>
+    <link rel="stylesheet" crossorigin href="/INFO_IT/assets/index-BUvfmpvi.css">
+  </head>
+  <body>
+    <div id="root"><a class="skip-link" href="#main">본문으로 건너뛰기</a><header class="site-header"><div class="container site-header__inner"><a class="brand" href="/INFO_IT">PANCO<span>_</span>IT</a><nav class="nav" aria-label="주요 메뉴"><a href="/INFO_IT">홈</a><a aria-current="page" class="active" href="/INFO_IT/posts">전체 글</a><a href="/INFO_IT/about">소개</a><a href="/INFO_IT/contact">문의</a><button class="theme-toggle" aria-label="다크 모드로 전환" title="테마 전환"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></button></nav></div></header><main id="main" class="container"><div class="reading-progress" style="width:0%" aria-hidden="true"></div><div class="post-layout"><article><header class="post-header"><a class="tag" href="/INFO_IT/category/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C">프론트엔드</a><h1 style="margin-top:0.75rem">CSR vs SSR vs SSG — SEO 관점에서 뭘 골라야 할까</h1><div class="post-header__meta"><span>Jungwoo</span><time dateTime="2026-07-20">2026년 7월 20일</time></div><div class="tag-row" style="margin-top:1rem"><span class="tag">#<!-- -->React</span><span class="tag">#<!-- -->SEO</span><span class="tag">#<!-- -->렌더링</span><span class="tag">#<!-- -->SSG</span></div></header><div class="ad-slot">광고 영역 (애드센스 승인 후 노출)</div><div id="article-body" class="prose" style="margin-top:2rem"><p>React 앱을 만들 때 가장 먼저 마주치는 갈림길이 <strong>렌더링 방식</strong>입니다.
+같은 화면을 그리더라도, 어디서 HTML을 만드느냐에 따라 SEO 결과가 크게 달라집니다.</p>
+<h2 id="세-가지-렌더링-방식"><a href="#세-가지-렌더링-방식">세 가지 렌더링 방식</a></h2>
+<h3 id="csr-client-side-rendering"><a href="#csr-client-side-rendering">CSR (Client-Side Rendering)</a></h3>
+<p>브라우저가 빈 HTML을 받은 뒤 JavaScript로 화면을 그립니다.
+Create React App의 기본 방식입니다.</p>
+<pre class="shiki shiki-themes github-light github-dark" style="background-color:#fff;--shiki-dark-bg:#24292e;color:#24292e;--shiki-dark:#e1e4e8" tabindex="0"><code><span class="line"><span style="color:#6A737D;--shiki-dark:#6A737D">&lt;!-- 크롤러가 처음 받는 HTML --&gt;</span></span>
+<span class="line"><span style="color:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="color:#22863A;--shiki-dark:#85E89D">div</span><span style="color:#6F42C1;--shiki-dark:#B392F0"> id</span><span style="color:#24292E;--shiki-dark:#E1E4E8">=</span><span style="color:#032F62;--shiki-dark:#9ECBFF">&quot;root&quot;</span><span style="color:#24292E;--shiki-dark:#E1E4E8">&gt;&lt;/</span><span style="color:#22863A;--shiki-dark:#85E89D">div</span><span style="color:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span></code></pre>
+<p>문제는 검색 크롤러가 <strong>처음에 빈 페이지</strong>를 본다는 것입니다.
+Googlebot은 JS를 실행하긴 하지만, 렌더링이 2차 큐로 밀려 색인이 지연되거나 실패할 수 있습니다.</p>
+<h3 id="ssr-server-side-rendering"><a href="#ssr-server-side-rendering">SSR (Server-Side Rendering)</a></h3>
+<p>요청마다 서버가 완성된 HTML을 생성해 내려줍니다. 항상 최신이지만 서버가 필요합니다.</p>
+<h3 id="ssg-static-site-generation"><a href="#ssg-static-site-generation">SSG (Static Site Generation)</a></h3>
+<p><strong>빌드 시점에</strong> 각 페이지를 정적 HTML로 미리 생성합니다.
+콘텐츠가 자주 바뀌지 않는 블로그에 가장 잘 맞습니다.</p>
+<h2 id="비교-정리"><a href="#비교-정리">비교 정리</a></h2>
+<table><thead><tr><th>방식</th><th>초기 HTML</th><th>SEO</th><th>서버 필요</th><th>블로그 적합도</th></tr></thead><tbody><tr><td>CSR</td><td>비어 있음</td><td>불리</td><td>X</td><td>낮음</td></tr><tr><td>SSR</td><td>완성됨</td><td>좋음</td><td>O</td><td>중간</td></tr><tr><td>SSG</td><td>완성됨</td><td>좋음</td><td>X</td><td><strong>높음</strong></td></tr></tbody></table>
+<h2 id="결론"><a href="#결론">결론</a></h2>
+<p>콘텐츠 중심 블로그라면 <strong>SSG</strong>가 정답에 가깝습니다.
+검색·광고 크롤러가 완성된 HTML을 즉시 받고, CDN에 정적 배포할 수 있어 성능·비용 모두 유리합니다.</p>
+<p>이 블로그도 <code>vite-react-ssg</code>로 SSG를 적용했습니다.</p></div><div style="margin-top:3rem;padding:1.4rem;border-radius:var(--radius);border:1px solid var(--border);background:var(--surface)"><strong>Jungwoo</strong><p class="muted" style="margin-top:0.35rem">IT 지식을 정리하는 개발자</p></div><div class="ad-slot">광고 영역 (애드센스 승인 후 노출)</div></article></div><section><div class="section-title"><h2>관련 글</h2></div><div class="bento"><a class="post-card " href="/INFO_IT/posts/intro-frontend"><span class="tag" style="align-self:flex-start">프론트엔드</span><h3 style="margin-top:0.75rem">프론트엔드 — 곧 시작해요</h3><p>웹사이트에서 눈에 보이는 화면을 만드는 기술. 이 카테고리의 첫 글을 준비하고 있어요. 곧 쉽고 친근하게 채워드릴게요!</p><div class="post-card__meta"><time dateTime="2026-07-01">2026년 7월 1일</time><span>· <!-- -->준비중</span></div></a><a class="post-card " href="/INFO_IT/posts/core-web-vitals-2026"><span class="tag" style="align-self:flex-start">웹 성능</span><h3 style="margin-top:0.75rem">Core Web Vitals 2026 — LCP, INP, CLS 한눈에 정리</h3><p>2026년에도 유효한 구글 Core Web Vitals 세 지표의 목표치와, 블로그에서 실제로 적용할 수 있는 최적화 방법을 정리합니다.</p><div class="post-card__meta"><time dateTime="2026-07-18">2026년 7월 18일</time><span>· <!-- -->성능, SEO, CoreWebVitals</span></div></a><a class="post-card " href="/INFO_IT/posts/welcome"><span class="tag" style="align-self:flex-start">블로그</span><h3 style="margin-top:0.75rem">INFO IT 블로그를 시작하며</h3><p>이 블로그가 어떤 IT 지식을 어떤 방식으로 다루는지, 그리고 이 사이트가 어떻게 만들어졌는지 소개합니다.</p><div class="post-card__meta"><time dateTime="2026-07-22">2026년 7월 22일</time><span>· <!-- -->소개, 시작하기</span></div></a></div></section></main><footer class="site-footer"><div class="container"><strong>PANCO_IT</strong><p class="muted" style="margin-top:0.4rem;max-width:48ch">어려운 IT를 초·중·고 누구나 이해할 수 있게, 그림과 비유로 쉽고 친근하게 풀어주는 블로그예요. 하나씩 차근차근 같이 배워요!</p><nav class="site-footer__links" aria-label="푸터 메뉴"><a href="/INFO_IT/about">소개</a><a href="/INFO_IT/contact">문의</a><a href="/INFO_IT/privacy">개인정보처리방침</a><a href="/INFO_IT/terms">이용약관</a></nav><p class="muted" style="margin-top:1.25rem;font-size:0.82rem">© <!-- -->2026<!-- --> <!-- -->PANCO_IT<!-- -->. All rights reserved.</p></div></footer></div>
+    <!--
+      Google AdSense: 승인 후 아래 주석을 해제하고 ca-pub-XXXXXXXX 를 본인 퍼블리셔 ID로 교체.
+      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
