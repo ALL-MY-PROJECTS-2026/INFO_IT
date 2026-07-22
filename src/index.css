@@ -1007,6 +1007,57 @@ a:hover {
   border-color: var(--accent);
 }
 
+/* --- 글 필터 바 (검색 + 카테고리 + 정렬) --- */
+.post-filter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.6rem 0.8rem;
+  margin-bottom: 0.5rem;
+}
+.post-filter .search-input {
+  margin-bottom: 0;
+  flex: 1 1 220px;
+}
+.post-filter__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.post-filter__field select {
+  padding: 0.55rem 0.7rem;
+  min-height: 44px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.post-filter__field select:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 1px;
+  border-color: var(--accent);
+}
+.post-filter__count {
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+}
+@media (max-width: 560px) {
+  .post-filter .search-input {
+    flex-basis: 100%;
+  }
+  .post-filter__field {
+    flex: 1 1 45%;
+  }
+  .post-filter__field select {
+    width: 100%;
+  }
+}
+
 /* --- 반응형: 모바일에서 사이드바 → 가로 스크롤 칩 --- */
 /* 태블릿(700~1000px): 왼쪽 사이드바를 칩 대신 2단으로 유지하되 폭을 줄여 본문 공간 확보 */
 @media (max-width: 1000px) {
