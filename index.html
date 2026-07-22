@@ -27,8 +27,11 @@
     <div id="root"><!--app-html--></div>
     <script type="module" src="/src/entry-client.tsx"></script>
     <!--
-      Google AdSense: 승인 후 아래 주석을 해제하고 ca-pub-XXXXXXXX 를 본인 퍼블리셔 ID로 교체.
-      <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+      Google AdSense / 사이트 소유확인:
+      이제 코드를 직접 넣지 않습니다. src/site.config.ts 에서
+        adsense.client = 실제 ca-pub-XXXX,  adsense.review = true (심사) / enabled = true (운영)
+        verification.google = Search Console 인증 코드
+      로 설정하면 빌드 시 모든 페이지 <head> 에 자동 삽입됩니다 (src/lib/head.tsx).
     -->
   </body>
 </html>

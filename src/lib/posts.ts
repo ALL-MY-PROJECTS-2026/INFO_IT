@@ -35,28 +35,32 @@ export function getPost(slug: string): Post | undefined {
   return posts.find((p) => p.slug === slug)
 }
 
-/** 모든 카테고리 목록 (글 수 포함) */
+/**
+ * 공개(비-draft) 글 기준 카테고리 목록 (글 수 포함).
+ * draft 스텁이 빈 카테고리를 만들지 않도록 livePosts 만 집계합니다.
+ */
 export function getCategories(): { name: string; count: number }[] {
   const map = new Map<string, number>()
-  for (const p of posts) {
+  for (const p of livePosts) {
     if (!p.category) continue
     map.set(p.category, (map.get(p.category) ?? 0) + 1)
   }
   return [...map.entries()].map(([name, count]) => ({ name, count }))
 }
 
+/** 카테고리별 공개 글 목록 (draft 제외) */
 export function getPostsByCategory(category: string): Post[] {
-  return posts.filter((p) => p.category === category)
+  return livePosts.filter((p) => p.category === category)
 }
 
-/** 특정 카테고리의 글 개수 (사이드바 배지용) */
+/** 특정 카테고리의 공개 글 개수 (사이드바 배지용, draft 제외) */
 export function postCountByCategory(category: string): number {
-  return posts.filter((p) => p.category === category).length
+  return livePosts.filter((p) => p.category === category).length
 }
 
-/** 같은 카테고리/태그 기준 관련 글 추천 */
+/** 같은 카테고리/태그 기준 관련 글 추천 (draft 제외) */
 export function getRelatedPosts(current: Post, limit = 3): Post[] {
-  return posts
+  return livePosts
     .filter((p) => p.slug !== current.slug)
     .map((p) => {
       let score = 0

@@ -52,14 +52,21 @@ tags: [React, SEO]
 
 ## 배포 전 체크리스트
 
-1. `src/site.config.ts` — `siteUrl`, 저자 정보, `adsense.client` 를 실제 값으로 교체
-2. `scripts/generate-sitemap.mjs`, `public/robots.txt` 의 `example.com` → 실제 도메인
-3. 애드센스 승인 후:
-   - `index.html` 의 adsbygoogle 스크립트 주석 해제
-   - `src/site.config.ts` 의 `adsense.enabled = true`
+1. `src/site.config.ts` — `siteUrl`, 저자 정보를 실제 값으로 교체
+2. `scripts/generate-sitemap.mjs`, `public/robots.txt` 의 도메인 → 실제 도메인
+   (기본값은 GitHub Pages 프로젝트 페이지 `.../INFO_IT`. `vite.config.ts` 의 `base` 도 동일 기준)
+3. `public/og-default.png` — 기본 OG 이미지(임시 그라디언트). 원하면 브랜드 디자인으로 교체
+4. Google Search Console 등록 → `src/site.config.ts` 의 `verification.google` 에 인증 코드 입력 (빌드 시 `<head>` 자동 삽입)
+5. 애드센스 **신청 직전**:
+   - `src/site.config.ts` 의 `adsense.client` = 실제 `ca-pub-XXXX`, `adsense.review = true`
+     → 심사용 로더가 모든 페이지 `<head>` 에 자동 삽입(광고는 아직 미노출)
+6. 애드센스 **승인 후**:
+   - `src/site.config.ts` 의 `adsense.enabled = true` (실제 광고 노출)
    - `public/ads.txt` 에 퍼블리셔 ID 입력
-4. `src/pages/Privacy.tsx` 개인정보처리방침을 실제 수집 실태에 맞게 검토
-5. 깊이 있는 글 15개 이상 확보 후 애드센스 신청 (사전조사 리서치의 Go/No-Go 체크리스트 참고)
+7. `src/pages/Privacy.tsx` 개인정보처리방침을 실제 수집 실태에 맞게 검토
+8. 카테고리는 `src/site.config.ts` 의 `categories` 에서 관리(현재 4개). 실제 글이 있는
+   카테고리만 사이드바·사이트맵에 노출되므로, 소수 카테고리에 글을 깊게 쌓는 것을 권장
+9. 깊이 있는 글을 충분히 확보한 뒤 애드센스 신청
 
 ## 빌드가 간헐적으로 실패할 때 (Windows/OneDrive)
 

@@ -81,11 +81,36 @@ function escapeHtml(s: string): string {
     .replace(/"/g, '&quot;')
 }
 
+/**
+ * 애드센스 로더 스크립트를 넣어야 하는지.
+ *  - client 가 실제 값(placeholder 아님)이고, review(심사) 또는 enabled(운영)일 때 true.
+ */
+export function adsenseActive(): boolean {
+  const c = site.adsense.client
+  return !!c && !c.includes('XXXX') && (site.adsense.review || site.adsense.enabled)
+}
+
+/** 사이트 전역(페이지 불변) head 태그: 소유 확인 메타 + 애드센스 로더 */
+function siteGlobalTags(): string[] {
+  return [
+    site.verification.google
+      ? `<meta name="google-site-verification" content="${escapeHtml(site.verification.google)}" />`
+      : '',
+    site.verification.naver
+      ? `<meta name="naver-site-verification" content="${escapeHtml(site.verification.naver)}" />`
+      : '',
+    adsenseActive()
+      ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${site.adsense.client}" crossorigin="anonymous"></script>`
+      : '',
+  ]
+}
+
 /** 프리렌더 시 <head> 에 삽입할 태그 문자열 생성 */
 export function buildHeadHtml(d: HeadData): string {
   const m = (prop: string, content: string | undefined, attr: 'name' | 'property' = 'name') =>
     content ? `<meta ${attr}="${prop}" content="${escapeHtml(content)}" />` : ''
   const tags = [
+    ...siteGlobalTags(),
     `<title>${escapeHtml(d.fullTitle)}</title>`,
     m('description', d.description),
     d.noindex ? '<meta name="robots" content="noindex, nofollow" />' : '',

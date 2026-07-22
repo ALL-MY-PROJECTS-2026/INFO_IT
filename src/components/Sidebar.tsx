@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom'
 import { site } from '../site.config'
-import { posts, postCountByCategory } from '../lib/posts'
+import { livePosts, postCountByCategory } from '../lib/posts'
 
 /**
  * 왼쪽 카테고리 사이드바 (블로그형).
@@ -19,14 +19,17 @@ export default function Sidebar() {
 
         <Link to="/posts" className={`cat-nav__item ${allActive ? 'active' : ''}`}>
           <span>전체 글</span>
-          <span className="count">{posts.length}</span>
+          <span className="count">{livePosts.length}</span>
         </Link>
 
-        {site.categories.map((c) => {
-          const to = `/category/${encodeURIComponent(c.label)}`
-          const active = decoded === `/category/${c.label}`
-          const count = postCountByCategory(c.label)
-          return (
+        {/* 공개 글이 있는 카테고리만 노출(빈 카테고리는 자동 숨김 → thin-page 방지) */}
+        {site.categories
+          .filter((c) => postCountByCategory(c.label) > 0)
+          .map((c) => {
+            const to = `/category/${encodeURIComponent(c.label)}`
+            const active = decoded === `/category/${c.label}`
+            const count = postCountByCategory(c.label)
+            return (
             <Link
               key={c.label}
               to={to}

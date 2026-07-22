@@ -8,10 +8,11 @@ import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeShiki from '@shikijs/rehype'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   // GitHub Pages 프로젝트 페이지는 /INFO_IT/ 하위에서 서빙됨.
-  // 빌드 시 VITE_BASE=/INFO_IT/ 로 지정. dev/일반 빌드는 '/'.
-  base: process.env.VITE_BASE || '/',
+  // build 시 자동으로 '/INFO_IT/'(자산·라우터 basename 모두 이 값 사용).
+  // dev(vite) 는 '/'. VITE_BASE 로 오버라이드 가능(커스텀 도메인 배포 시 '/').
+  base: process.env.VITE_BASE || (command === 'build' ? '/INFO_IT/' : '/'),
   plugins: [
     // MDX must run before the React plugin so JSX from posts is transformed.
     {
@@ -34,4 +35,4 @@ export default defineConfig({
     },
     react({ include: /\.(jsx|js|mdx|md|tsx|ts)$/ }),
   ],
-})
+}))
