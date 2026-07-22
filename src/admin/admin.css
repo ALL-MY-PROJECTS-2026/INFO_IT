@@ -153,6 +153,29 @@
   font-size: 0.88rem;
   margin-bottom: 1rem;
 }
+/* MDX 에디터 툴바 */
+.mdx-editor__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  padding: 0.4rem;
+  border: 1px solid var(--border);
+  border-bottom: 0;
+  border-radius: 6px 6px 0 0;
+  background: var(--bg-subtle);
+}
+.mdx-editor__bar button {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
+}
+.mdx-editor__status {
+  font-size: 0.8rem;
+}
+.mdx-editor .admin__mdx {
+  border-radius: 0 0 6px 6px;
+}
+
 /* 페이지·글에 붙는 dev 전용 편집 버튼 */
 .edit-fab {
   display: inline-flex;

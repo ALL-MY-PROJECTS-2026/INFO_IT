@@ -13,12 +13,14 @@ import {
 import { resolve, sep } from 'node:path'
 
 const SLUG_RE = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i
+const IMG_EXT = new Set(['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'avif'])
 
 export function adminApiPlugin() {
   const root = process.cwd()
   const SITE_JSON = resolve(root, 'src/content/site.json')
   const PAGES_DIR = resolve(root, 'src/content/pages')
   const POSTS_DIR = resolve(root, 'src/content/posts')
+  const UPLOADS_DIR = resolve(root, 'public/uploads') // 업로드 이미지 → 배포 시 /uploads 로 서빙
 
   function mdxPath(dir, slug) {
     if (typeof slug !== 'string' || !SLUG_RE.test(slug)) throw new Error('허용되지 않은 파일명(slug)')
@@ -35,12 +37,12 @@ export function adminApiPlugin() {
       .sort()
   }
 
-  function readBody(req) {
+  function readBody(req, max = 2_000_000) {
     return new Promise((res, rej) => {
       let data = ''
       req.on('data', (c) => {
         data += c
-        if (data.length > 2_000_000) rej(new Error('본문이 너무 큽니다(2MB 초과)'))
+        if (data.length > max) rej(new Error(`본문이 너무 큽니다(${Math.round(max / 1e6)}MB 초과)`))
       })
       req.on('end', () => res(data))
       req.on('error', rej)
@@ -120,6 +122,40 @@ export function adminApiPlugin() {
                 if (existsSync(p)) unlinkSync(p)
                 return send(200, { ok: true })
               }
+            }
+          }
+
+          // --- 이미지 업로드 = public/uploads/*  ---
+          if (resource === 'media') {
+            if (method === 'GET' && !id) {
+              const items = existsSync(UPLOADS_DIR)
+                ? readdirSync(UPLOADS_DIR)
+                    .filter((f) => IMG_EXT.has((f.split('.').pop() || '').toLowerCase()))
+                    .map((f) => `/uploads/${f}`)
+                : []
+              return send(200, { items })
+            }
+            if (method === 'POST') {
+              const b = JSON.parse(await readBody(req, 12_000_000)) // 이미지용 12MB
+              const m = /^data:(image\/[a-z0-9.+-]+);base64,(.+)$/i.exec(String(b.dataUrl || ''))
+              if (!m) return send(400, { error: '이미지 데이터가 아닙니다' })
+              let ext = (String(b.filename || '').split('.').pop() || '').toLowerCase()
+              if (!IMG_EXT.has(ext)) {
+                const mime = m[1].split('/')[1]
+                ext = mime === 'jpeg' ? 'jpg' : mime
+              }
+              if (!IMG_EXT.has(ext)) return send(400, { error: '허용되지 않은 이미지 형식' })
+              const base = String(b.filename || 'image')
+                .replace(/\.[^.]+$/, '')
+                .replace(/[^a-z0-9-_]+/gi, '-')
+                .replace(/^-+|-+$/g, '')
+                .slice(0, 40)
+              const finalName = `${base || 'image'}-${Date.now()}.${ext}`
+              const outPath = resolve(UPLOADS_DIR, finalName)
+              if (!outPath.startsWith(UPLOADS_DIR + sep)) throw new Error('허용되지 않은 경로')
+              if (!existsSync(UPLOADS_DIR)) mkdirSync(UPLOADS_DIR, { recursive: true })
+              writeFileSync(outPath, Buffer.from(m[2], 'base64'))
+              return send(200, { path: `/uploads/${finalName}` })
             }
           }
 

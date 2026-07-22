@@ -7,6 +7,7 @@ import TableOfContents from '../components/TableOfContents'
 import PostCard from '../components/PostCard'
 import AdUnit from '../components/ads/AdUnit'
 import { getPost, getRelatedPosts } from '../lib/posts'
+import { mdxComponents } from '../lib/mdxComponents'
 import { formatDate, readingMinutes } from '../lib/format'
 import { site } from '../site.config'
 import NotFound from './NotFound'
@@ -79,7 +80,7 @@ export default function PostDetail() {
           <AdUnit slot="post-top" />
 
           <div id={ARTICLE_ID} ref={articleRef} className="prose" style={{ marginTop: '2rem' }}>
-            <MDXProvider>
+            <MDXProvider components={mdxComponents}>
               <Component />
             </MDXProvider>
           </div>

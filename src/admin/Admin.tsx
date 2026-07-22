@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { adminApi, type PostItem } from './api'
 import { parseFrontmatter, stringifyFrontmatter, type Frontmatter } from './frontmatter'
+import MdxEditor from './MdxEditor'
 import './admin.css'
 
 type Tab = 'structure' | 'pages' | 'posts'
@@ -208,9 +209,9 @@ function PagesEditor({ initial }: { initial: string }) {
         ))}
       </div>
       <p className="muted" style={{ fontSize: '.85rem' }}>
-        MDX(마크다운) 형식. 맨 위 <code>--- title: … ---</code> 블록은 그대로 두세요.
+        MDX(마크다운) 형식. 맨 위 <code>--- title: … ---</code> 블록은 그대로 두세요. 이미지·링크는 아래 툴바로 넣을 수 있습니다.
       </p>
-      <textarea className="admin__mdx" rows={20} value={raw} onChange={(e) => setRaw(e.target.value)} />
+      <MdxEditor value={raw} onChange={setRaw} rows={20} />
       <div className="admin__save">
         <button className="admin__primary" onClick={save}>
           저장
@@ -377,10 +378,8 @@ function PostForm({ slug, onDone }: { slug: string | null; onDone: () => void })
       <label className="admin__check">
         <input type="checkbox" checked={draft} onChange={(e) => setDraft(e.target.checked)} /> 준비중(draft) — 목록·사이트맵 제외
       </label>
-      <label>
-        본문 (MDX / 마크다운)
-        <textarea className="admin__mdx" rows={16} value={body} onChange={(e) => setBody(e.target.value)} />
-      </label>
+      <label>본문 (MDX / 마크다운) — 이미지·링크는 툴바 사용</label>
+      <MdxEditor value={body} onChange={setBody} rows={16} />
       <div className="admin__save">
         <button className="admin__primary" onClick={save}>
           저장

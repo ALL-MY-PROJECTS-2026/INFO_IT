@@ -28,4 +28,7 @@ export const adminApi = {
   delPost: (slug: string) => req('DELETE', `/posts/${slug}`),
   getPage: (slug: string) => req('GET', `/pages/${slug}`) as Promise<{ slug: string; raw: string }>,
   putPage: (slug: string, raw: string) => req('PUT', `/pages/${slug}`, { raw }),
+  listMedia: () => req('GET', '/media') as Promise<{ items: string[] }>,
+  uploadMedia: (filename: string, dataUrl: string) =>
+    req('POST', '/media', { filename, dataUrl }) as Promise<{ path: string }>,
 }

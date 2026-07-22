@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
+import { MDXProvider } from '@mdx-js/react'
 import Seo from './Seo'
 import { getPage } from '../lib/pages'
+import { mdxComponents } from '../lib/mdxComponents'
 
 /**
  * content/pages/{slug}.mdx 를 읽어 렌더하는 정적 페이지 컴포넌트.
@@ -27,7 +29,9 @@ export default function PageDoc({ slug, path }: { slug: string; path: string }) 
           ✏️ 이 페이지 편집
         </Link>
       )}
-      <Component />
+      <MDXProvider components={mdxComponents}>
+        <Component />
+      </MDXProvider>
     </div>
   )
 }
