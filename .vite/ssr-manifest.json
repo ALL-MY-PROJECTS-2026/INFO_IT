@@ -48,6 +48,7 @@
   "src/index.css": [],
   "src/lib/format.ts": [],
   "src/lib/head.tsx": [],
+  "src/lib/mdxComponents.tsx": [],
   "src/lib/pages.ts": [],
   "src/lib/posts.ts": [],
   "src/pages/About.tsx": [],
