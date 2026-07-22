@@ -54,6 +54,27 @@
   margin-bottom: 0.5rem;
   flex-wrap: wrap;
 }
+/* 그룹(세부토픽 묶음) 편집 블록 */
+.admin__group {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.6rem 0.7rem;
+  margin-bottom: 0.7rem;
+  background: var(--bg-subtle);
+}
+.admin__group-head {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.55rem;
+}
+.admin__group-name {
+  font-weight: 700;
+  max-width: 12rem;
+}
+.admin__group-head button {
+  padding: 0.3rem 0.55rem;
+}
 .admin input,
 .admin textarea,
 .admin select {

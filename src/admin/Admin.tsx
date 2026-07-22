@@ -84,6 +84,38 @@ function StructureEditor() {
   const footer = (site.footer as FooterData) || { tagline: '', copyright: '', links: [] }
   const patch = (p: Record<string, unknown>) => setSite({ ...site, ...p })
 
+  // ── 카테고리(그룹→세부토픽) 조작 헬퍼 ──
+  const groupOrder: string[] = []
+  for (const c of cats) {
+    const g = c.group || ''
+    if (!groupOrder.includes(g)) groupOrder.push(g)
+  }
+  const idxOfGroup = (g: string) =>
+    cats.map((c, i) => ({ c, i })).filter((x) => (x.c.group || '') === g).map((x) => x.i)
+  const setCats = (next: Cat[]) => patch({ categories: next })
+  const updateCat = (i: number, field: 'label' | 'desc', v: string) =>
+    setCats(cats.map((c, j) => (j === i ? { ...c, [field]: v } : c)))
+  const deleteCat = (i: number) => setCats(cats.filter((_, j) => j !== i))
+  const addTopic = (g: string) => setCats([...cats, { label: '새 토픽', desc: '', group: g }])
+  // 같은 그룹 안에서만 우선순위(순서) 이동
+  const moveTopic = (i: number, dir: -1 | 1) => {
+    const sib = idxOfGroup(cats[i].group || '')
+    const target = sib[sib.indexOf(i) + dir]
+    if (target !== undefined) setCats(swap(cats, i, target))
+  }
+  const renameGroup = (oldG: string, newG: string) =>
+    setCats(cats.map((c) => ((c.group || '') === oldG ? { ...c, group: newG } : c)))
+  // 그룹 블록 전체의 순서 이동
+  const moveGroup = (g: string, dir: -1 | 1) => {
+    const order = [...groupOrder]
+    const pos = order.indexOf(g)
+    if (pos + dir < 0 || pos + dir >= order.length) return
+    ;[order[pos], order[pos + dir]] = [order[pos + dir], order[pos]]
+    const rebuilt: Cat[] = []
+    for (const gn of order) rebuilt.push(...cats.filter((c) => (c.group || '') === gn))
+    setCats(rebuilt)
+  }
+
   const save = async () => {
     setStatus('저장 중…')
     try {
@@ -113,43 +145,49 @@ function StructureEditor() {
       </section>
 
       <section className="admin__card">
-        <h2>왼쪽 카테고리 ({cats.length})</h2>
-        <p className="muted" style={{ marginBottom: '.6rem', fontSize: '.82rem' }}>
-          <b>그룹</b>을 적으면 같은 그룹끼리 사이드바에서 <b>헤더 아래 세부토픽</b>으로 묶여요.
-          (예: 그룹 <code>뉴스</code> · 이름 <code>IT소식</code>) 그룹을 비우면 평면으로 표시됩니다.
+        <h2>왼쪽 카테고리 · 세부토픽</h2>
+        <p className="muted" style={{ marginBottom: '.7rem', fontSize: '.82rem' }}>
+          그룹 안 토픽의 <b>↑↓</b> 로 <b>우선순위(순서)</b>를 바꾸고, 그룹의 <b>▲▼</b> 로 그룹 순서를 바꿉니다.
+          그룹명을 비우면 그 토픽들은 사이드바에 평면으로 표시돼요.
         </p>
-        {cats.map((c, i) => (
-          <div className="admin__row" key={i}>
-            <input
-              style={{ maxWidth: '7rem' }}
-              placeholder="그룹(선택)"
-              value={c.group || ''}
-              onChange={(e) => patch({ categories: cats.map((x, j) => (j === i ? { ...x, group: e.target.value } : x)) })}
-            />
-            <input
-              placeholder="이름(토픽)"
-              value={c.label}
-              onChange={(e) => patch({ categories: cats.map((x, j) => (j === i ? { ...x, label: e.target.value } : x)) })}
-            />
-            <input
-              placeholder="설명"
-              value={c.desc}
-              onChange={(e) => patch({ categories: cats.map((x, j) => (j === i ? { ...x, desc: e.target.value } : x)) })}
-            />
-            <button onClick={() => patch({ categories: cats.filter((_, j) => j !== i) })}>삭제</button>
-            <button disabled={i === 0} onClick={() => patch({ categories: swap(cats, i, i - 1) })}>
-              ↑
-            </button>
-            <button disabled={i === cats.length - 1} onClick={() => patch({ categories: swap(cats, i, i + 1) })}>
-              ↓
-            </button>
+        {groupOrder.map((g, gi) => (
+          <div className="admin__group" key={'g' + gi}>
+            <div className="admin__group-head">
+              <input
+                className="admin__group-name"
+                placeholder="(그룹 없음)"
+                value={g}
+                onChange={(e) => renameGroup(g, e.target.value)}
+              />
+              <span className="muted" style={{ fontSize: '.76rem' }}>그룹 순서</span>
+              <button disabled={gi === 0} onClick={() => moveGroup(g, -1)} title="그룹 위로">
+                ▲
+              </button>
+              <button disabled={gi === groupOrder.length - 1} onClick={() => moveGroup(g, 1)} title="그룹 아래로">
+                ▼
+              </button>
+            </div>
+            {idxOfGroup(g).map((i, ti, arr) => (
+              <div className="admin__row" key={i}>
+                <input placeholder="토픽 이름" value={cats[i].label} onChange={(e) => updateCat(i, 'label', e.target.value)} />
+                <input placeholder="설명" value={cats[i].desc} onChange={(e) => updateCat(i, 'desc', e.target.value)} />
+                <button disabled={ti === 0} onClick={() => moveTopic(i, -1)} title="우선순위 올리기">
+                  ↑
+                </button>
+                <button disabled={ti === arr.length - 1} onClick={() => moveTopic(i, 1)} title="우선순위 내리기">
+                  ↓
+                </button>
+                <button onClick={() => deleteCat(i)}>삭제</button>
+              </div>
+            ))}
+            <button onClick={() => addTopic(g)}>+ 이 그룹에 토픽 추가</button>
           </div>
         ))}
-        <button onClick={() => patch({ categories: [...cats, { label: '새 토픽', desc: '', group: '' }] })}>
-          + 카테고리 추가
+        <button className="admin__primary" onClick={() => addTopic('새 그룹')} style={{ marginTop: '.2rem' }}>
+          + 새 그룹 추가
         </button>
-        <p className="muted" style={{ marginTop: '.5rem', fontSize: '.82rem' }}>
-          ※ 실제 사이드바엔 글이 있는 카테고리만 표시됩니다(빈 카테고리는 자동 숨김).
+        <p className="muted" style={{ marginTop: '.6rem', fontSize: '.82rem' }}>
+          ※ 실제 사이드바엔 글이 있는 토픽만 표시됩니다(빈 토픽은 자동 숨김).
         </p>
       </section>
 
