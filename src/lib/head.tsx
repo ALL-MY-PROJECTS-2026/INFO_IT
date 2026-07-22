@@ -12,6 +12,7 @@ export interface HeadData {
   modifiedTime?: string
   jsonLd: Record<string, unknown>
   noindex: boolean
+  breadcrumbs?: { name: string; url: string }[]
 }
 
 export interface SeoProps {
@@ -26,6 +27,8 @@ export interface SeoProps {
   article?: boolean
   /** 검색 색인 제외 (준비 중 글 등) */
   noindex?: boolean
+  /** 브레드크럼 (홈 > 카테고리 > 글). BreadcrumbList JSON-LD 생성용 */
+  breadcrumbs?: { name: string; path: string }[]
 }
 
 /** SSR 렌더 중 head 를 수집하는 컨테이너 (client 에서는 null) */
@@ -70,6 +73,7 @@ export function computeMeta(props: SeoProps): HeadData {
     modifiedTime: props.modifiedTime,
     jsonLd,
     noindex: !!props.noindex,
+    breadcrumbs: props.breadcrumbs?.map((b) => ({ name: b.name, url: `${site.siteUrl}${b.path}` })),
   }
 }
 
@@ -140,6 +144,18 @@ export function buildHeadHtml(d: HeadData): string {
     m('twitter:description', d.description),
     m('twitter:image', d.image),
     `<script type="application/ld+json">${JSON.stringify(d.jsonLd)}</script>`,
+    d.breadcrumbs && d.breadcrumbs.length > 1
+      ? `<script type="application/ld+json">${JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: d.breadcrumbs.map((b, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            name: b.name,
+            item: b.url,
+          })),
+        })}</script>`
+      : '',
   ]
   return tags.filter(Boolean).join('\n    ')
 }

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { MDXProvider } from '@mdx-js/react'
 import Seo from '../components/Seo'
+import Breadcrumbs from '../components/Breadcrumbs'
 import ReadingProgress from '../components/ReadingProgress'
 import TableOfContents from '../components/TableOfContents'
 import PostCard from '../components/PostCard'
@@ -31,6 +32,14 @@ export default function PostDetail() {
   const related = getRelatedPosts(post)
   const { Component } = post
 
+  const crumbs = [
+    { name: '홈', path: '/' },
+    ...(post.category
+      ? [{ name: post.category, path: `/category/${encodeURIComponent(post.category)}` }]
+      : []),
+    { name: post.title, path: `/posts/${post.slug}` },
+  ]
+
   return (
     <>
       <Seo
@@ -44,6 +53,7 @@ export default function PostDetail() {
         tags={post.tags}
         image={post.cover}
         noindex={post.draft}
+        breadcrumbs={crumbs}
       />
       <ReadingProgress />
 
@@ -54,6 +64,7 @@ export default function PostDetail() {
               ✏️ 이 글 편집
             </Link>
           )}
+          <Breadcrumbs items={crumbs} />
           <header className="post-header">
             {post.category && (
               <Link to={`/category/${encodeURIComponent(post.category)}`} className="tag">

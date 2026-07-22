@@ -1,5 +1,6 @@
 import { Link, useParams } from 'react-router-dom'
 import Seo from '../components/Seo'
+import Breadcrumbs from '../components/Breadcrumbs'
 import Sidebar from '../components/Sidebar'
 import PostRow from '../components/PostRow'
 import { getPostsByCategory } from '../lib/posts'
@@ -11,14 +12,24 @@ export default function Category() {
   const list = getPostsByCategory(category)
   const meta = site.categories.find((c) => c.label === category)
 
+  const crumbs = [
+    { name: '홈', path: '/' },
+    { name: category, path: `/category/${encodeURIComponent(category)}` },
+  ]
+
   return (
     <>
-      <Seo title={`${category} 카테고리`} path={`/category/${encodeURIComponent(category)}`} />
+      <Seo
+        title={`${category} 카테고리`}
+        path={`/category/${encodeURIComponent(category)}`}
+        breadcrumbs={crumbs}
+      />
 
       <div className="blog">
         <Sidebar />
 
         <div className="blog__main">
+          <Breadcrumbs items={crumbs} />
           <header className="feed-head">
             <p className="feed-head__eyebrow">카테고리</p>
             <h1>{category}</h1>

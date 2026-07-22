@@ -721,6 +721,40 @@ a:hover {
 .muted {
   color: var(--text-muted);
 }
+/* 브레드크럼 (홈 › 카테고리 › 글) */
+.breadcrumbs {
+  margin: 0 0 1rem;
+  font-size: 0.82rem;
+}
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.1rem 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-faint);
+}
+.breadcrumbs li + li::before {
+  content: '›';
+  margin-right: 0.4rem;
+  color: var(--text-faint);
+}
+.breadcrumbs a {
+  color: var(--text-muted);
+}
+.breadcrumbs a:hover {
+  color: var(--accent);
+}
+.breadcrumbs [aria-current='page'] {
+  color: var(--text);
+  font-weight: 600;
+}
 .center {
   text-align: center;
 }
