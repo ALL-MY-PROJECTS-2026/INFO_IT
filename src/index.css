@@ -626,6 +626,8 @@ a:hover {
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-top: 1.75rem;
+  padding: 0 clamp(16px, 4vw, 64px); /* 좌우 여백 — 대시보드가 화면 끝에 붙어 잘려 보이지 않게 */
+  box-sizing: border-box;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   background: var(--bg-subtle);
@@ -634,6 +636,8 @@ a:hover {
   display: block;
   border: 0;
   width: 100%;
+  max-width: 1600px; /* 초대형 화면에서 과도하게 늘어나지 않게 */
+  margin: 0 auto;
   height: 1150px;
 }
 @media (max-width: 1000px) {
