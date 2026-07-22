@@ -64,6 +64,11 @@ interface NavItem {
   label: string
   to: string
 }
+interface FooterData {
+  tagline: string
+  copyright: string
+  links: NavItem[]
+}
 function StructureEditor() {
   const [site, setSite] = useState<Record<string, unknown> | null>(null)
   const [status, setStatus] = useState('')
@@ -76,6 +81,7 @@ function StructureEditor() {
 
   const cats = (site.categories as Cat[]) || []
   const nav = (site.nav as NavItem[]) || []
+  const footer = (site.footer as FooterData) || { tagline: '', copyright: '', links: [] }
   const patch = (p: Record<string, unknown>) => setSite({ ...site, ...p })
 
   const save = async () => {
@@ -165,6 +171,63 @@ function StructureEditor() {
           </div>
         ))}
         <button onClick={() => patch({ nav: [...nav, { label: '새 메뉴', to: '/' }] })}>+ 메뉴 추가</button>
+      </section>
+
+      <section className="admin__card">
+        <h2>푸터</h2>
+        <label>
+          소개 문구
+          <textarea
+            rows={2}
+            value={footer.tagline}
+            onChange={(e) => patch({ footer: { ...footer, tagline: e.target.value } })}
+          />
+        </label>
+        <label>
+          저작권 문구 (<code>{'{year}'}</code> 는 현재 연도로 자동 치환됩니다)
+          <input
+            value={footer.copyright}
+            onChange={(e) => patch({ footer: { ...footer, copyright: e.target.value } })}
+          />
+        </label>
+        <div style={{ fontWeight: 600, margin: '.7rem 0 .35rem' }}>링크 ({footer.links.length})</div>
+        {footer.links.map((c, i) => (
+          <div className="admin__row" key={i}>
+            <input
+              placeholder="라벨"
+              value={c.label}
+              onChange={(e) =>
+                patch({
+                  footer: { ...footer, links: footer.links.map((x, j) => (j === i ? { ...x, label: e.target.value } : x)) },
+                })
+              }
+            />
+            <input
+              placeholder="경로 (예: /about)"
+              value={c.to}
+              onChange={(e) =>
+                patch({
+                  footer: { ...footer, links: footer.links.map((x, j) => (j === i ? { ...x, to: e.target.value } : x)) },
+                })
+              }
+            />
+            <button onClick={() => patch({ footer: { ...footer, links: footer.links.filter((_, j) => j !== i) } })}>
+              삭제
+            </button>
+            <button disabled={i === 0} onClick={() => patch({ footer: { ...footer, links: swap(footer.links, i, i - 1) } })}>
+              ↑
+            </button>
+            <button
+              disabled={i === footer.links.length - 1}
+              onClick={() => patch({ footer: { ...footer, links: swap(footer.links, i, i + 1) } })}
+            >
+              ↓
+            </button>
+          </div>
+        ))}
+        <button onClick={() => patch({ footer: { ...footer, links: [...footer.links, { label: '새 링크', to: '/' }] } })}>
+          + 링크 추가
+        </button>
       </section>
 
       <div className="admin__save">
