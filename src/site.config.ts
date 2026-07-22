@@ -30,7 +30,7 @@ export const site = {
     // 만드는 법: GA4 → Looker Studio 리포트 생성 → 공유에서 '링크가 있는 모든 사용자에게 공개'
     //   → 리포트 상단 '삽입'(</>) → '삽입 코드'의 iframe src(=embed URL) 복사해 붙여넣기.
     // 예: 'https://lookerstudio.google.com/embed/reporting/xxxxxxxx-xxxx/page/xxxx'
-    lookerStudioEmbedUrl: '',
+    lookerStudioEmbedUrl: 'https://lookerstudio.google.com/embed/reporting/3080199a-9c7b-4cf6-915c-91e4c10142b5/page/8fV4F',
   },
   // 애드센스 설정.
   //  1) 승인 신청 전: client 를 실제 ca-pub-XXXX 로 교체하고 review=true 로 두면
