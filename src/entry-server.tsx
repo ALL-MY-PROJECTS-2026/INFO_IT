@@ -30,7 +30,7 @@ export function render(url: string): RenderResult {
 
 /** 프리렌더 대상 전체 경로 목록 (정적 페이지 + 글 + 카테고리) */
 export function getPrerenderPaths(): string[] {
-  const staticPaths = ['/', '/posts', '/about', '/contact', '/privacy', '/terms']
+  const staticPaths = ['/', '/posts', '/about', '/contact', '/privacy', '/terms', '/stats']
   const postPaths = livePosts.map((p) => `/posts/${p.slug}`)
   const categoryPaths = getCategories().map(
     (c) => `/category/${encodeURIComponent(c.name)}`,

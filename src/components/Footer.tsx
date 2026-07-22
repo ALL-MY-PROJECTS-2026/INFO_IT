@@ -13,6 +13,7 @@ export default function Footer() {
         <nav className="site-footer__links" aria-label="푸터 메뉴">
           <Link to="/about">소개</Link>
           <Link to="/contact">문의</Link>
+          <Link to="/stats">방문 통계</Link>
           <Link to="/privacy">개인정보처리방침</Link>
           <Link to="/terms">이용약관</Link>
         </nav>

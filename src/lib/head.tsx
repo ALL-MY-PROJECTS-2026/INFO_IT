@@ -90,14 +90,24 @@ export function adsenseActive(): boolean {
   return !!c && !c.includes('XXXX') && (site.adsense.review || site.adsense.enabled)
 }
 
-/** 사이트 전역(페이지 불변) head 태그: 소유 확인 메타 + 애드센스 로더 */
+/** GA4 측정 ID 가 실제 값(placeholder 아님)인지 */
+export function ga4Active(): boolean {
+  const id = site.analytics.ga4
+  return !!id && /^G-[A-Z0-9]+$/i.test(id)
+}
+
+/** 사이트 전역(페이지 불변) head 태그: 소유 확인 메타 + GA4 + 애드센스 로더 */
 function siteGlobalTags(): string[] {
+  const gid = site.analytics.ga4
   return [
     site.verification.google
       ? `<meta name="google-site-verification" content="${escapeHtml(site.verification.google)}" />`
       : '',
     site.verification.naver
       ? `<meta name="naver-site-verification" content="${escapeHtml(site.verification.naver)}" />`
+      : '',
+    ga4Active()
+      ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${gid}"></script>\n    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gid}');</script>`
       : '',
     adsenseActive()
       ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${site.adsense.client}" crossorigin="anonymous"></script>`

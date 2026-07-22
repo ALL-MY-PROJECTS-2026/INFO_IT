@@ -8,6 +8,7 @@ import About from './pages/About'
 import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
+import Stats from './pages/Stats'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -22,6 +23,7 @@ export default function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="privacy" element={<Privacy />} />
         <Route path="terms" element={<Terms />} />
+        <Route path="stats" element={<Stats />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

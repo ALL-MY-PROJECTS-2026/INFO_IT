@@ -10,7 +10,7 @@ const root = join(__dirname, '..')
 // 배포 도메인 (src/site.config.ts 의 siteUrl 과 일치). 커스텀 도메인 연결 시 교체.
 const SITE_URL = 'https://all-my-projects-2026.github.io/INFO_IT'
 
-const staticPaths = ['/', '/posts', '/about', '/contact', '/privacy', '/terms']
+const staticPaths = ['/', '/posts', '/about', '/contact', '/privacy', '/terms', '/stats']
 
 /** 아주 단순한 frontmatter 파서 (draft, category 만 추출) */
 function readFrontmatter(text) {
