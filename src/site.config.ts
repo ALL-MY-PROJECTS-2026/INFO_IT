@@ -25,7 +25,7 @@ export const site = {
   // <head> 에 자동 삽입되어 방문 통계가 GA4 대시보드에 누적됩니다.
   // SPA 경로 이동은 GA4 '향상된 측정'이 History 이벤트로 자동 집계합니다.
   analytics: {
-    ga4: '', // 예: 'G-XXXXXXXXXX'
+    ga4: 'G-Z15X9WDPP7', // GA4 웹 스트림(MYWEBPROJECT-01) 측정 ID
     // 방문 통계 페이지(/stats)에 임베드할 Looker Studio '공개' 리포트 URL.
     // 만드는 법: GA4 → Looker Studio 리포트 생성 → 공유에서 '링크가 있는 모든 사용자에게 공개'
     //   → 리포트 상단 '삽입'(</>) → '삽입 코드'의 iframe src(=embed URL) 복사해 붙여넣기.
