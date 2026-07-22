@@ -28,6 +28,11 @@
   ],
   "categories": [
     {
+      "label": "IT소식",
+      "desc": "따끈따끈한 IT·개발 소식을 쉽게 전해요",
+      "group": "뉴스"
+    },
+    {
       "label": "웹 개발",
       "desc": "웹사이트를 만드는 프론트엔드·백엔드 기술",
       "group": "개발"
@@ -46,22 +51,32 @@
       "label": "CS 기초",
       "desc": "컴퓨터가 동작하는 기본 원리와 개발 상식",
       "group": "개발"
-    },
-    {
-      "label": "IT소식",
-      "desc": "따끈따끈한 IT·개발 소식을 쉽게 전해요",
-      "group": "뉴스"
     }
   ],
   "footer": {
     "tagline": "어려운 IT를 초·중·고 누구나 이해할 수 있게, 쉽고 친근하게 풀어주는 블로그예요.",
     "copyright": "© {year} PANCO_IT. All rights reserved.",
     "links": [
-      { "label": "소개", "to": "/about" },
-      { "label": "문의", "to": "/contact" },
-      { "label": "방문 통계", "to": "/stats" },
-      { "label": "개인정보처리방침", "to": "/privacy" },
-      { "label": "이용약관", "to": "/terms" }
+      {
+        "label": "소개",
+        "to": "/about"
+      },
+      {
+        "label": "문의",
+        "to": "/contact"
+      },
+      {
+        "label": "방문 통계",
+        "to": "/stats"
+      },
+      {
+        "label": "개인정보처리방침",
+        "to": "/privacy"
+      },
+      {
+        "label": "이용약관",
+        "to": "/terms"
+      }
     ]
   }
 }
