@@ -51,6 +51,7 @@
   "src/pages/PostDetail.tsx": [],
   "src/pages/PostList.tsx": [],
   "src/pages/Privacy.tsx": [],
+  "src/pages/Stats.tsx": [],
   "src/pages/Terms.tsx": [],
   "src/site.config.ts": []
 }
