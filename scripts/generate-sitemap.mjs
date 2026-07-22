@@ -12,46 +12,46 @@ const SITE_URL = 'https://all-my-projects-2026.github.io/INFO_IT'
 
 const staticPaths = ['/', '/posts', '/about', '/contact', '/privacy', '/terms', '/stats']
 
-/** 아주 단순한 frontmatter 파서 (draft, category 만 추출) */
+/** 아주 단순한 frontmatter 파서 (draft, category, date 추출) */
 function readFrontmatter(text) {
   const m = text.match(/^---\s*([\s\S]*?)\s*---/)
-  const fm = { draft: false, category: '' }
+  const fm = { draft: false, category: '', date: '' }
   if (!m) return fm
   for (const line of m[1].split('\n')) {
     const dm = line.match(/^\s*draft:\s*(true|false)\s*$/)
     if (dm) fm.draft = dm[1] === 'true'
     const cm = line.match(/^\s*category:\s*(.+?)\s*$/)
     if (cm) fm.category = cm[1].replace(/^["']|["']$/g, '')
+    const dt = line.match(/^\s*date:\s*(.+?)\s*$/)
+    if (dt) fm.date = dt[1].replace(/^["']|["']$/g, '')
   }
   return fm
 }
 
+const today = new Date().toISOString().split('T')[0]
 const postsDir = join(root, 'src', 'content', 'posts')
 const liveCategories = new Set()
-const postPaths = []
+const entries = staticPaths.map((p) => ({ path: p, lastmod: today }))
 
 if (existsSync(postsDir)) {
   for (const f of readdirSync(postsDir).filter((f) => f.endsWith('.mdx'))) {
     const fm = readFrontmatter(readFileSync(join(postsDir, f), 'utf-8'))
     if (fm.draft) continue // 준비 중 글은 사이트맵 제외
-    postPaths.push(`/posts/${f.replace(/\.mdx$/, '')}`)
+    entries.push({ path: `/posts/${f.replace(/\.mdx$/, '')}`, lastmod: fm.date || today })
     if (fm.category) liveCategories.add(fm.category)
   }
 }
 
 // 실제 글이 하나라도 있는 카테고리만 사이트맵에 포함
-const categoryPaths = [...liveCategories].map((c) => `/category/${encodeURIComponent(c)}`)
-
-const allPaths = [...staticPaths, ...postPaths, ...categoryPaths]
-const today = new Date().toISOString().split('T')[0]
+for (const c of liveCategories) entries.push({ path: `/category/${encodeURIComponent(c)}`, lastmod: today })
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${allPaths
+${entries
   .map(
-    (p) => `  <url>
-    <loc>${SITE_URL}${p}</loc>
-    <lastmod>${today}</lastmod>
+    (e) => `  <url>
+    <loc>${SITE_URL}${e.path}</loc>
+    <lastmod>${e.lastmod}</lastmod>
     <changefreq>weekly</changefreq>
   </url>`,
   )
@@ -62,7 +62,7 @@ ${allPaths
 const outDir = join(root, 'dist')
 if (existsSync(outDir)) {
   writeFileSync(join(outDir, 'sitemap.xml'), xml, 'utf-8')
-  console.log(`✓ sitemap.xml 생성 완료 (${allPaths.length} URLs, 초안 제외)`)
+  console.log(`✓ sitemap.xml 생성 완료 (${entries.length} URLs, 초안 제외)`)
 } else {
   console.warn('⚠ dist 디렉터리가 없어 사이트맵을 건너뜁니다. 먼저 빌드하세요.')
 }

@@ -117,6 +117,16 @@ function siteGlobalTags(): string[] {
     adsenseActive()
       ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${site.adsense.client}" crossorigin="anonymous"></script>`
       : '',
+    // RSS 구독 링크 (블로그 표준 신호)
+    `<link rel="alternate" type="application/rss+xml" title="${escapeHtml(site.title)} RSS" href="${site.siteUrl}/feed.xml" />`,
+    // Organization 구조화데이터 (E-E-A-T / 발행자 식별)
+    `<script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: site.title,
+      url: `${site.siteUrl}/`,
+      logo: `${site.siteUrl}/og-default.png`,
+    })}</script>`,
   ]
 }
 

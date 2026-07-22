@@ -6,7 +6,7 @@
   "description": "IT 지식 정리 기술 블로그 — Vite + React + TypeScript + SSG(커스텀 프리렌더)",
   "scripts": {
     "dev": "vite",
-    "build": "npm run build:client && npm run build:server && node prerender.mjs && node scripts/generate-sitemap.mjs",
+    "build": "npm run build:client && npm run build:server && node prerender.mjs && node scripts/generate-sitemap.mjs && node scripts/generate-feed.mjs",
     "build:client": "vite build --ssrManifest --outDir dist",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
     "preview": "vite preview --outDir dist",
