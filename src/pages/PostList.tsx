@@ -56,36 +56,56 @@ export default function PostList() {
           </header>
 
           <div className="post-filter">
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="제목·태그·카테고리 검색…"
-              aria-label="글 검색"
-              className="search-input"
-            />
-            <label className="post-filter__field">
-              <span>카테고리</span>
-              <select value={cat} onChange={(e) => setCat(e.target.value)} aria-label="카테고리 필터">
-                <option value="">전체</option>
+            <div className="fbox fbox--search">
+              <svg className="fbox__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <path d="M21 21l-4.3-4.3" />
+              </svg>
+              <input
+                type="search"
+                className="fbox__input"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="검색"
+                aria-label="글 검색"
+              />
+            </div>
+            <div className="fbox">
+              <svg className="fbox__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 5h18l-7 8v6l-4 2v-8z" />
+              </svg>
+              <select
+                className="fbox__select"
+                value={cat}
+                onChange={(e) => setCat(e.target.value)}
+                aria-label="카테고리 필터"
+              >
+                <option value="">전체 카테고리</option>
                 {categories.map((c) => (
                   <option key={c} value={c}>
                     {c}
                   </option>
                 ))}
               </select>
-            </label>
-            <label className="post-filter__field">
-              <span>정렬</span>
-              <select value={sort} onChange={(e) => setSort(e.target.value as SortKey)} aria-label="정렬">
+            </div>
+            <div className="fbox">
+              <svg className="fbox__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16M6 12h12M9 18h6" />
+              </svg>
+              <select
+                className="fbox__select"
+                value={sort}
+                onChange={(e) => setSort(e.target.value as SortKey)}
+                aria-label="정렬"
+              >
                 <option value="new">최신순</option>
                 <option value="old">오래된순</option>
                 <option value="cat">카테고리순</option>
               </select>
-            </label>
+            </div>
           </div>
 
-          <p className="post-filter__count muted">{list.length}개 표시</p>
+          <p className="post-filter__count muted">{list.length}개</p>
 
           {list.length === 0 ? (
             <p className="muted">조건에 맞는 글이 없어요.</p>
