@@ -58,6 +58,7 @@ function swap<T>(a: T[], i: number, j: number): T[] {
 interface Cat {
   label: string
   desc: string
+  group: string
 }
 interface NavItem {
   label: string
@@ -107,10 +108,20 @@ function StructureEditor() {
 
       <section className="admin__card">
         <h2>왼쪽 카테고리 ({cats.length})</h2>
+        <p className="muted" style={{ marginBottom: '.6rem', fontSize: '.82rem' }}>
+          <b>그룹</b>을 적으면 같은 그룹끼리 사이드바에서 <b>헤더 아래 세부토픽</b>으로 묶여요.
+          (예: 그룹 <code>뉴스</code> · 이름 <code>IT소식</code>) 그룹을 비우면 평면으로 표시됩니다.
+        </p>
         {cats.map((c, i) => (
           <div className="admin__row" key={i}>
             <input
-              placeholder="이름"
+              style={{ maxWidth: '7rem' }}
+              placeholder="그룹(선택)"
+              value={c.group || ''}
+              onChange={(e) => patch({ categories: cats.map((x, j) => (j === i ? { ...x, group: e.target.value } : x)) })}
+            />
+            <input
+              placeholder="이름(토픽)"
               value={c.label}
               onChange={(e) => patch({ categories: cats.map((x, j) => (j === i ? { ...x, label: e.target.value } : x)) })}
             />
@@ -128,11 +139,11 @@ function StructureEditor() {
             </button>
           </div>
         ))}
-        <button onClick={() => patch({ categories: [...cats, { label: '새 카테고리', desc: '' }] })}>
+        <button onClick={() => patch({ categories: [...cats, { label: '새 토픽', desc: '', group: '' }] })}>
           + 카테고리 추가
         </button>
         <p className="muted" style={{ marginTop: '.5rem', fontSize: '.82rem' }}>
-          ※ 실제 사이드바엔 글이 있는 카테고리만 표시됩니다.
+          ※ 실제 사이드바엔 글이 있는 카테고리만 표시됩니다(빈 카테고리는 자동 숨김).
         </p>
       </section>
 
@@ -283,7 +294,7 @@ function PostsEditor({ initial }: { initial: string | null }) {
 
 function PostForm({ slug, onDone }: { slug: string | null; onDone: () => void }) {
   const isNew = slug === null
-  const [cats, setCats] = useState<string[]>([])
+  const [cats, setCats] = useState<{ label: string; group: string }[]>([])
   const [fileSlug, setFileSlug] = useState(slug || '')
   const [title, setTitle] = useState('')
   const [category, setCategory] = useState('')
@@ -295,7 +306,14 @@ function PostForm({ slug, onDone }: { slug: string | null; onDone: () => void })
   const [status, setStatus] = useState('')
 
   useEffect(() => {
-    adminApi.getSite().then((s) => setCats(((s.categories as { label: string }[]) || []).map((c) => c.label)))
+    adminApi.getSite().then((s) =>
+      setCats(
+        ((s.categories as { label: string; group?: string }[]) || []).map((c) => ({
+          label: c.label,
+          group: c.group || '',
+        })),
+      ),
+    )
   }, [])
 
   useEffect(() => {
@@ -356,10 +374,23 @@ function PostForm({ slug, onDone }: { slug: string | null; onDone: () => void })
         카테고리
         <select value={category} onChange={(e) => setCategory(e.target.value)}>
           <option value="">(없음)</option>
-          {cats.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
+          {cats
+            .filter((c) => !c.group)
+            .map((c) => (
+              <option key={c.label} value={c.label}>
+                {c.label}
+              </option>
+            ))}
+          {[...new Set(cats.filter((c) => c.group).map((c) => c.group))].map((g) => (
+            <optgroup key={g} label={g}>
+              {cats
+                .filter((c) => c.group === g)
+                .map((c) => (
+                  <option key={c.label} value={c.label}>
+                    {c.label}
+                  </option>
+                ))}
+            </optgroup>
           ))}
         </select>
       </label>

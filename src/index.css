@@ -730,6 +730,26 @@ a:hover {
   font-size: 0.72rem;
   color: var(--text-faint);
 }
+/* 전체 글 아래 가로선 */
+.cat-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.55rem 0.4rem 0.45rem;
+}
+/* 세부 카테고리 그룹 (그룹 헤더 + 하위 토픽) */
+.cat-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 0.5rem;
+}
+.cat-group__title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  padding: 0.3rem 0.7rem 0.25rem;
+}
 
 /* --- 피드 헤더 (히어로리스) --- */
 .feed-head {
@@ -917,6 +937,16 @@ a:hover {
     border-color: var(--accent);
   }
   .cat-nav__item .count {
+    display: none;
+  }
+  /* 모바일: 그룹 구조를 평면 칩으로 (헤더·가로선 숨김, 토픽만 가로 스크롤) */
+  .cat-divider {
+    display: none;
+  }
+  .cat-group {
+    display: contents;
+  }
+  .cat-group__title {
     display: none;
   }
 }
