@@ -106,8 +106,9 @@ function siteGlobalTags(): string[] {
     site.verification.naver
       ? `<meta name="naver-site-verification" content="${escapeHtml(site.verification.naver)}" />`
       : '',
+    // GA4: gtag/config 는 즉시 정의(이벤트 큐잉), 실제 gtag.js 는 유휴(idle) 시점에 로드해 초기 렌더 경로에서 제외
     ga4Active()
-      ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${gid}"></script>\n    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gid}');</script>`
+      ? `<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gid}');(function(){function l(){var s=document.createElement('script');s.async=1;s.src='https://www.googletagmanager.com/gtag/js?id=${gid}';document.head.appendChild(s);}if('requestIdleCallback'in window){requestIdleCallback(l,{timeout:4000});}else{window.addEventListener('load',function(){setTimeout(l,1500);});}})();</script>`
       : '',
     adsenseActive()
       ? `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${site.adsense.client}" crossorigin="anonymous"></script>`

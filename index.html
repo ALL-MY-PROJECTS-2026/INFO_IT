@@ -4,13 +4,27 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- 친근한 웹폰트: Do Hyeon(제목) · Gowun Dodum(본문) -->
+    <!-- 친근한 웹폰트: Do Hyeon(제목) · Gowun Dodum(본문) — 렌더 비차단 로드
+         (한글은 Google 의 unicode-range 서브셋이 효율적이라 유지하고, CSS 만 비차단으로) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&display=swap"
-      rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Gowun+Dodum&display=swap"
+      />
+    </noscript>
     <!--app-head-->
     <!-- FOUC 방지: 기본은 라이트 모드, 사용자가 토글로 바꾼 경우만 그 값 사용 -->
     <script>
