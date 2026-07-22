@@ -83,6 +83,7 @@ body {
   color: var(--text);
   line-height: 1.65;
   font-size: 18px;
+  overflow-x: clip; /* 전체폭(100vw) 임베드가 가로 스크롤을 만들지 않도록 (sticky 안전) */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
@@ -617,6 +618,33 @@ a:hover {
 }
 .page ul {
   padding-left: 1.3em;
+}
+
+/* 방문 통계 대시보드 임베드: 본문 읽기폭(.page)을 벗어나 화면 전체 폭으로 표시.
+   iframe 높이를 콘텐츠보다 넉넉히 잡아 내부 세로 스크롤이 생기지 않게 한다. */
+.stats-embed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-top: 1.75rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-subtle);
+}
+.stats-embed iframe {
+  display: block;
+  border: 0;
+  width: 100%;
+  height: 1150px;
+}
+@media (max-width: 1000px) {
+  .stats-embed iframe {
+    height: 1550px;
+  }
+}
+@media (max-width: 560px) {
+  .stats-embed iframe {
+    height: 1950px;
+  }
 }
 
 .muted {

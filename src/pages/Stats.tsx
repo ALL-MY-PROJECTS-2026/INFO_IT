@@ -24,23 +24,11 @@ export default function Stats() {
       </p>
 
       {url ? (
-        <div
-          style={{
-            position: 'relative',
-            width: '100%',
-            height: '80vh',
-            minHeight: 600,
-            marginTop: '1.25rem',
-            border: '1px solid var(--border)',
-            borderRadius: 6,
-            overflow: 'hidden',
-          }}
-        >
+        <div className="stats-embed">
           <iframe
             src={url}
             title="방문 통계 대시보드 (Looker Studio)"
             loading="lazy"
-            style={{ border: 0, width: '100%', height: '100%' }}
             sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
             allowFullScreen
           />
