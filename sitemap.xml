@@ -46,6 +46,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://all-my-projects-2026.github.io/INFO_IT/posts/news-panco-open</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://all-my-projects-2026.github.io/INFO_IT/posts/welcome</loc>
     <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -57,6 +62,11 @@
   </url>
   <url>
     <loc>https://all-my-projects-2026.github.io/INFO_IT/category/%EC%9B%B9%20%EA%B0%9C%EB%B0%9C</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://all-my-projects-2026.github.io/INFO_IT/category/IT%EC%86%8C%EC%8B%9D</loc>
     <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
   </url>
