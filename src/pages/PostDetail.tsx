@@ -48,6 +48,11 @@ export default function PostDetail() {
 
       <div className="post-layout">
         <article>
+          {import.meta.env.DEV && (
+            <Link className="edit-fab" to={`/admin?tab=posts&slug=${post.slug}`}>
+              ✏️ 이 글 편집
+            </Link>
+          )}
           <header className="post-header">
             {post.category && (
               <Link to={`/category/${encodeURIComponent(post.category)}`} className="tag">

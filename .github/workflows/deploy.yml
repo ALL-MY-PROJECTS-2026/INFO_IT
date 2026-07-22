@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages
+
+# main 에 push 되면 자동으로 빌드 → gh-pages 브랜치로 배포.
+# 관리자 모드에서 편집 → git push 하면 이 워크플로가 라이브에 반영한다.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: deploy-gh-pages
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build (base=/INFO_IT/ 자동 적용)
+        run: npm run build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages

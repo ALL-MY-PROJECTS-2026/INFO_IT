@@ -20,6 +20,11 @@ export default function Header() {
               {item.label}
             </NavLink>
           ))}
+          {import.meta.env.DEV && (
+            <NavLink to="/admin" className={({ isActive }) => (isActive ? 'active' : undefined)} title="localhost 전용 관리자">
+              🔧 관리자
+            </NavLink>
+          )}
           <ThemeToggle />
         </nav>
       </div>

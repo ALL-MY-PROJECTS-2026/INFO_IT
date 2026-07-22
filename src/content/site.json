@@ -1,0 +1,59 @@
+{
+  "title": "PANCO_IT",
+  "description": "어려운 IT를 초·중·고 누구나 이해할 수 있게, 그림과 비유로 쉽고 친근하게 풀어주는 블로그예요. 하나씩 차근차근 같이 배워요!",
+  "siteUrl": "https://all-my-projects-2026.github.io/INFO_IT",
+  "locale": "ko_KR",
+  "author": {
+    "name": "Jungwoo",
+    "bio": "IT 지식을 정리하는 개발자",
+    "email": "jwg135790@gmail.com"
+  },
+  "nav": [
+    {
+      "label": "홈",
+      "to": "/"
+    },
+    {
+      "label": "전체 글",
+      "to": "/posts"
+    },
+    {
+      "label": "소개",
+      "to": "/about"
+    },
+    {
+      "label": "문의",
+      "to": "/contact"
+    }
+  ],
+  "categories": [
+    {
+      "label": "웹 개발",
+      "desc": "웹사이트를 만드는 프론트엔드·백엔드 기술"
+    },
+    {
+      "label": "웹 성능·SEO",
+      "desc": "빠르고 검색에 잘 노출되는 사이트 만들기"
+    },
+    {
+      "label": "클라우드·인프라",
+      "desc": "만든 서비스를 배포하고 운영·자동화하기"
+    },
+    {
+      "label": "CS 기초",
+      "desc": "컴퓨터가 동작하는 기본 원리와 개발 상식"
+    },
+    {
+      "label": "새 카테고리",
+      "desc": ""
+    },
+    {
+      "label": "새 카테고리",
+      "desc": ""
+    },
+    {
+      "label": "새 카테고리",
+      "desc": ""
+    }
+  ]
+}

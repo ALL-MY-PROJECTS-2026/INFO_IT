@@ -7,6 +7,8 @@ import remarkGfm from 'remark-gfm'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeShiki from '@shikijs/rehype'
+// @ts-expect-error - JS 플러그인(타입 선언 없음), dev 전용 관리자 API
+import { adminApiPlugin } from './vite-admin.mjs'
 
 export default defineConfig(({ command }) => ({
   // GitHub Pages 프로젝트 페이지는 /INFO_IT/ 하위에서 서빙됨.
@@ -14,6 +16,8 @@ export default defineConfig(({ command }) => ({
   // dev(vite) 는 '/'. VITE_BASE 로 오버라이드 가능(커스텀 도메인 배포 시 '/').
   base: process.env.VITE_BASE || (command === 'build' ? '/INFO_IT/' : '/'),
   plugins: [
+    // localhost 전용 관리자 저장 API (dev 에서만 동작, 프로덕션 미포함)
+    adminApiPlugin(),
     // MDX must run before the React plugin so JSX from posts is transformed.
     {
       enforce: 'pre',

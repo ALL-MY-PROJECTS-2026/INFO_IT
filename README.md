@@ -41,6 +41,26 @@ tags: [React, SEO]
 본문을 마크다운으로 작성합니다.
 ```
 
+## 관리자 모드 (localhost 전용 편집)
+
+`npm run dev` 로 로컬 실행하면 **localhost 에서만** 관리자 모드가 활성화됩니다. 헤더의 **🔧 관리자** 링크(또는 `/admin`)로 진입해 브라우저에서 콘텐츠를 편집·저장할 수 있습니다.
+
+- **카테고리 · 메뉴 · 정보** — 왼쪽 카테고리, 상단 메뉴, 사이트 제목/설명 CRUD (→ `src/content/site.json`)
+- **페이지** — 소개·문의·개인정보·약관 본문 편집 (→ `src/content/pages/*.mdx`)
+- **글** — 목록·작성·편집·삭제 (→ `src/content/posts/*.mdx`)
+- 각 페이지·글 상단의 **✏️ 편집** 버튼으로 바로 해당 편집기로 이동
+
+편집 흐름: `저장(파일 기록) → git commit → git push → 자동 배포로 라이브 반영`.
+
+### 동작·보안 원리
+- 저장 API(`/__admin/api/*`)는 `vite-admin.mjs` 의 **`apply: 'serve'` 플러그인** — `vite dev`(localhost)에서만 존재합니다. 정적 호스팅(gh-pages)엔 서버가 없어 **프로덕션에선 실행 자체가 불가능**합니다.
+- 관리자 UI·편집 버튼은 **`import.meta.env.DEV`** 로 감싸 프로덕션 빌드에서 **완전히 제거**됩니다(트리셰이킹). `grep -r "__admin/api" dist/` 결과가 비어 있어야 정상.
+- 저장 API는 `src/content/**` 화이트리스트 경로만 쓰며 `../` 경로 탈출을 차단합니다. dev 서버는 localhost 바인딩을 유지하세요(`--host` 사용 금지).
+
+## 자동 배포 (GitHub Actions)
+
+`.github/workflows/deploy.yml` 이 **main 에 push 될 때마다** 빌드 후 `gh-pages` 브랜치로 자동 배포합니다. 즉 관리자 모드에서 편집 후 `git push` 만 하면 라이브에 반영됩니다.
+
 ## 구현된 기능 (리서치 반영)
 
 | 영역 | 내용 |

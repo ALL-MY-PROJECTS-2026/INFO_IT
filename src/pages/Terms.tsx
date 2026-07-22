@@ -1,36 +1,6 @@
-import Seo from '../components/Seo'
-import { site } from '../site.config'
+import PageDoc from '../components/PageDoc'
 
+// 콘텐츠는 src/content/pages/terms.mdx 에서 관리합니다.
 export default function Terms() {
-  return (
-    <div className="page">
-      <Seo title="이용약관" path="/terms" />
-      <h1>이용약관</h1>
-      <p className="muted">최종 개정일: 2026년 7월 22일</p>
-
-      <h2>1. 목적</h2>
-      <p>본 약관은 {site.title}(이하 "사이트")가 제공하는 콘텐츠 및 서비스의 이용 조건을 규정합니다.</p>
-
-      <h2>2. 콘텐츠 저작권</h2>
-      <p>
-        사이트에 게시된 모든 글·이미지·코드의 저작권은 저작자에게 있습니다. 무단 복제·배포를 금하며,
-        인용 시 출처를 명확히 표기해 주세요.
-      </p>
-
-      <h2>3. 면책 조항</h2>
-      <p>
-        본 사이트의 콘텐츠는 정보 제공을 목적으로 하며, 정확성·완전성을 보장하지 않습니다. 콘텐츠를
-        활용한 결과에 대한 책임은 이용자 본인에게 있습니다.
-      </p>
-
-      <h2>4. 외부 링크 및 광고</h2>
-      <p>
-        본 사이트는 제3자 광고 및 외부 링크를 포함할 수 있으며, 외부 사이트의 콘텐츠·정책에 대해서는
-        책임지지 않습니다.
-      </p>
-
-      <h2>5. 약관의 변경</h2>
-      <p>본 약관은 필요 시 개정될 수 있으며, 변경 시 본 페이지를 통해 공지합니다.</p>
-    </div>
-  )
+  return <PageDoc slug="terms" path="/terms" />
 }
