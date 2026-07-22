@@ -21,8 +21,12 @@ export default function Header() {
             </NavLink>
           ))}
           {import.meta.env.DEV && (
-            <NavLink to="/admin" className={({ isActive }) => (isActive ? 'active' : undefined)} title="localhost 전용 관리자">
-              🔧 관리자
+            <NavLink
+              to="/admin"
+              className={({ isActive }) => `nav__admin${isActive ? ' active' : ''}`}
+              title="localhost 전용 관리자 (프로덕션 미포함)"
+            >
+              관리자
             </NavLink>
           )}
           <ThemeToggle />

@@ -213,6 +213,21 @@ a:hover {
   background: var(--surface-2);
   text-decoration: none;
 }
+/* dev 전용 관리자 링크: 메인 메뉴와 구분되는 컴팩트 칩 (프로덕션엔 미포함) */
+.nav a.nav__admin {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.35rem 0.55rem;
+  min-height: 34px;
+}
+.nav a.nav__admin:hover,
+.nav a.nav__admin.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: transparent;
+}
 .theme-toggle {
   display: inline-grid;
   place-items: center;
@@ -626,14 +641,19 @@ a:hover {
   padding-left: 1.3em;
 }
 
-/* 방문 통계 대시보드 임베드: 본문 읽기폭(.page)을 벗어나 화면 전체 폭으로 표시.
-   iframe 높이를 콘텐츠보다 넉넉히 잡아 내부 세로 스크롤이 생기지 않게 한다. */
+/* 방문 통계 페이지: 텍스트는 읽기폭, 대시보드는 컨테이너 전체폭으로 '중앙정렬'.
+   (기존 100vw 튀어나오기는 부모(.page)가 좌측정렬이라 왼쪽으로 쏠려 제거함) */
+.stats-page {
+  max-width: 100%;
+}
+.stats-page > h1,
+.stats-page > p,
+.stats-page > section {
+  max-width: var(--measure);
+}
 .stats-embed {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
   margin-top: 1.75rem;
-  padding: 0 clamp(16px, 4vw, 64px); /* 좌우 여백 — 대시보드가 화면 끝에 붙어 잘려 보이지 않게 */
-  box-sizing: border-box;
+  padding: 1rem 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
   background: var(--bg-subtle);
@@ -642,18 +662,13 @@ a:hover {
   display: block;
   border: 0;
   width: 100%;
-  max-width: 1600px; /* 초대형 화면에서 과도하게 늘어나지 않게 */
   margin: 0 auto;
-  height: 1150px;
+  /* 리포트는 iframe 크기에 맞춰 반응형으로 채워짐. 폭을 제대로 채우면 내부 스크롤 없이 딱 맞는 높이 */
+  height: 900px;
 }
-@media (max-width: 1000px) {
+@media (max-width: 700px) {
   .stats-embed iframe {
-    height: 1550px;
-  }
-}
-@media (max-width: 560px) {
-  .stats-embed iframe {
-    height: 1950px;
+    height: 820px;
   }
 }
 
@@ -913,7 +928,15 @@ a:hover {
 }
 
 /* --- 반응형: 모바일에서 사이드바 → 가로 스크롤 칩 --- */
-@media (max-width: 900px) {
+/* 태블릿(700~1000px): 왼쪽 사이드바를 칩 대신 2단으로 유지하되 폭을 줄여 본문 공간 확보 */
+@media (max-width: 1000px) {
+  .blog {
+    --sidebar-w: 200px;
+    gap: 30px;
+  }
+}
+/* 모바일(≤700px): 사이드바를 가로 스크롤 칩으로 전환 */
+@media (max-width: 700px) {
   .blog {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem;

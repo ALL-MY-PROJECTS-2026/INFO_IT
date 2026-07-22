@@ -12,7 +12,7 @@ export default function Stats() {
   const url = site.analytics.lookerStudioEmbedUrl
 
   return (
-    <div className="page">
+    <div className="page stats-page">
       <Seo
         title="방문 통계"
         path="/stats"

@@ -176,6 +176,32 @@
   border-radius: 0 0 6px 6px;
 }
 
+/* 모바일 최적화: 좁은 화면에서 입력을 세로로 쌓고 여백·탭을 컴팩트하게 */
+@media (max-width: 600px) {
+  .admin {
+    padding-top: 1.25rem;
+  }
+  .admin__card {
+    padding: 0.85rem 0.95rem;
+  }
+  .admin__row {
+    gap: 0.4rem;
+  }
+  .admin__row input {
+    min-width: 100%;
+  }
+  .admin__tabs {
+    gap: 0.1rem;
+  }
+  .admin__tabs button {
+    padding: 0.5rem 0.55rem;
+    font-size: 0.86rem;
+  }
+  .admin__list li {
+    flex-wrap: wrap;
+  }
+}
+
 /* 페이지·글에 붙는 dev 전용 편집 버튼 */
 .edit-fab {
   display: inline-flex;
