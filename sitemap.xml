@@ -2,62 +2,57 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://all-my-projects-2026.github.io/INFO_IT/</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://all-my-projects-2026.github.io/INFO_IT/posts</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://all-my-projects-2026.github.io/INFO_IT/about</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://all-my-projects-2026.github.io/INFO_IT/contact</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://all-my-projects-2026.github.io/INFO_IT/privacy</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://all-my-projects-2026.github.io/INFO_IT/terms</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://all-my-projects-2026.github.io/INFO_IT/posts/core-web-vitals-2026</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://all-my-projects-2026.github.io/INFO_IT/posts/csr-vs-ssg-seo</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://all-my-projects-2026.github.io/INFO_IT/posts/welcome</loc>
-    <lastmod>2026-07-21</lastmod>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://all-my-projects-2026.github.io/INFO_IT/category/%EC%9B%B9%20%EC%84%B1%EB%8A%A5</loc>
-    <lastmod>2026-07-21</lastmod>
+    <loc>https://all-my-projects-2026.github.io/INFO_IT/category/%EC%9B%B9%20%EC%84%B1%EB%8A%A5%C2%B7SEO</loc>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://all-my-projects-2026.github.io/INFO_IT/category/%ED%94%84%EB%A1%A0%ED%8A%B8%EC%97%94%EB%93%9C</loc>
-    <lastmod>2026-07-21</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://all-my-projects-2026.github.io/INFO_IT/category/%EB%B8%94%EB%A1%9C%EA%B7%B8</loc>
-    <lastmod>2026-07-21</lastmod>
+    <loc>https://all-my-projects-2026.github.io/INFO_IT/category/%EC%9B%B9%20%EA%B0%9C%EB%B0%9C</loc>
+    <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 </urlset>
