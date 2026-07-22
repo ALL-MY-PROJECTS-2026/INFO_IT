@@ -105,6 +105,10 @@ video {
   max-width: 100%;
   height: auto;
 }
+/* 임베드(예: 통계 대시보드)는 높이는 두고 폭만 제한해 모바일 오버플로 방지 */
+iframe {
+  max-width: 100%;
+}
 a {
   color: var(--accent);
   text-decoration: none;
@@ -413,6 +417,8 @@ a:hover {
   max-width: var(--measure);
   font-size: 1.075rem;
   line-height: 1.8;
+  /* 모바일에서 긴 URL·문자열이 가로로 넘치지 않게 */
+  overflow-wrap: break-word;
 }
 .prose > * + * {
   margin-top: 1.25em;
@@ -931,7 +937,8 @@ a:hover {
     border: 1px solid var(--border);
     border-radius: 3px;
     white-space: nowrap;
-    padding: 0.4rem 0.7rem;
+    padding: 0.4rem 0.8rem;
+    min-height: 40px;
   }
   .cat-nav__item.active {
     border-color: var(--accent);
