@@ -30,6 +30,17 @@ export const site = {
     review: false,
     enabled: false,
   },
+  // 방문 통계(/stats) 접근 잠금 (배포 사이트에서 아이디/비밀번호 요구).
+  //  ⚠️ 정적 호스팅(GitHub Pages)에는 서버가 없어 '완전한' 보안은 불가능합니다.
+  //     이 게이트는 캐주얼한 열람을 막는 수준이며, 비밀번호는 평문 대신 SHA-256 해시로만 저장합니다.
+  //  비밀번호 변경: node -e "const c=require('crypto');console.log(c.createHash('sha256').update('panco-stats-v1:'+'새비번').digest('hex'))"
+  //     → 출력 해시를 passHash 에 붙여넣기.
+  statsAuth: {
+    enabled: true,
+    user: 'admin',
+    salt: 'panco-stats-v1:',
+    passHash: '180a153e85eb4ba812f4b9d50555538e6a3f99d8caf20f6b5538c361a4d36e77',
+  },
 } as const
 
 export type SiteConfig = typeof site
