@@ -11,8 +11,27 @@ function withBase(url?: string): string | undefined {
   return url
 }
 
-function Img(props: ComponentProps<'img'>) {
-  return <img {...props} src={withBase(props.src)} loading="lazy" />
+function Img({ src: rawSrc, style, ...rest }: ComponentProps<'img'>) {
+  const src = withBase(rawSrc)
+  // shields.io 기술스택 뱃지는 가로 한 줄로 흐르도록 inline-block 처리(사이트 img 기본값은 block).
+  if (rawSrc && /img\.shields\.io/.test(rawSrc)) {
+    return (
+      <img
+        {...rest}
+        src={src}
+        loading="lazy"
+        style={{
+          display: 'inline-block',
+          verticalAlign: 'middle',
+          height: 28,
+          width: 'auto',
+          margin: '3px 5px 3px 0',
+          ...(style as object),
+        }}
+      />
+    )
+  }
+  return <img {...rest} src={src} style={style} loading="lazy" />
 }
 
 function A({ href: rawHref, children, ...rest }: ComponentProps<'a'>) {
