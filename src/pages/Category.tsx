@@ -40,7 +40,7 @@ export default function Category() {
 
           {list.length === 0 ? (
             <p className="muted" style={{ paddingTop: '1.5rem' }}>
-              이 카테고리에는 아직 글이 없어요. <Link to="/posts">전체 글 보기</Link>
+              이 카테고리에는 아직 글이 없습니다. <Link to="/posts">전체 글 보기</Link>
             </p>
           ) : (
             <div className="post-list">

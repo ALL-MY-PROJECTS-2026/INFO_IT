@@ -77,7 +77,7 @@ export default function Stats() {
       />
       <h1>방문 통계</h1>
       <p className="muted">
-        이 블로그의 방문 데이터는 Google Analytics 4 로 집계됩니다. 대시보드는 <b>관리자 로그인</b> 후 볼 수 있어요.
+        이 블로그의 방문 데이터는 Google Analytics 4 로 집계됩니다. 대시보드는 <b>관리자 로그인</b> 후 볼 수 있습니다.
       </p>
 
       {!authed ? (
@@ -130,7 +130,7 @@ export default function Stats() {
         >
           <h2 style={{ marginTop: 0 }}>대시보드 준비 중</h2>
           <p>
-            공개 방문 통계 대시보드를 아직 연결하지 않았어요. <code>src/site.config.ts</code> 의{' '}
+            공개 방문 통계 대시보드를 아직 연결하지 않았습니다. <code>src/site.config.ts</code> 의{' '}
             <code>analytics.lookerStudioEmbedUrl</code> 에 Looker Studio 임베드 URL 을 넣으면 이 자리에 표시됩니다.
           </p>
         </section>

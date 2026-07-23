@@ -14,7 +14,7 @@ export const site = {
   //  - naver:  네이버 서치어드바이저 인증 코드(선택)
   verification: {
     google: '',
-    naver: '',
+    naver: '55ea6272593a6f382821e6df3932406d6ad42d7b',
   },
   // Google Analytics 4 + 방문 통계(/stats) 대시보드.
   analytics: {

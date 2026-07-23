@@ -52,7 +52,7 @@ export default function PostList() {
           <header className="feed-head">
             <p className="feed-head__eyebrow">모든 글을 한곳에</p>
             <h1>전체 글</h1>
-            <p className="feed-head__desc">총 {posts.length}개의 글이 있어요.</p>
+            <p className="feed-head__desc">총 {posts.length}개의 글이 있습니다.</p>
           </header>
 
           <div className="post-filter">
@@ -108,7 +108,7 @@ export default function PostList() {
           <p className="post-filter__count muted">{list.length}개</p>
 
           {list.length === 0 ? (
-            <p className="muted">조건에 맞는 글이 없어요.</p>
+            <p className="muted">조건에 맞는 글이 없습니다.</p>
           ) : (
             <div className="post-list">
               {list.map((p) => (

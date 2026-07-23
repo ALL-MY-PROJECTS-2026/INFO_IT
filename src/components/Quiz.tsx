@@ -52,7 +52,7 @@ export default function Quiz({ questions }: { questions: QuizQuestion[] }) {
         ? '완벽합니다. 핵심을 정확히 잡으셨습니다.'
         : score >= Math.ceil(total / 2)
           ? '좋습니다. 틀린 부분만 다시 보면 됩니다.'
-          : '괜찮습니다. 위 내용을 한 번 더 읽고 도전해 보세요.'
+          : '괜찮습니다. 위 내용을 한 번 더 읽고 다시 도전해 보십시오.'
     return (
       <div className="quiz">
         <div className="quiz__result">

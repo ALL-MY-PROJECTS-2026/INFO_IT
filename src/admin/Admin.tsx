@@ -164,7 +164,7 @@ function StructureEditor() {
         <h2>왼쪽 카테고리 · 세부토픽</h2>
         <p className="muted" style={{ marginBottom: '.7rem', fontSize: '.82rem' }}>
           그룹 안 토픽의 <b>↑↓</b> 로 <b>우선순위(순서)</b>를 바꾸고, 그룹의 <b>▲▼</b> 로 그룹 순서를 바꿉니다.
-          그룹명을 비우면 그 토픽들은 사이드바에 평면으로 표시돼요.
+          그룹명을 비우면 그 토픽들은 사이드바에 평면으로 표시됩니다.
         </p>
         {groupOrder.map((g, gi) => (
           <div className="admin__group" key={'g' + gi}>
@@ -337,7 +337,7 @@ function PagesEditor({ initial }: { initial: string }) {
         ))}
       </div>
       <p className="muted" style={{ fontSize: '.85rem' }}>
-        MDX(마크다운) 형식. 맨 위 <code>--- title: … ---</code> 블록은 그대로 두세요. 이미지·링크는 아래 툴바로 넣을 수 있습니다.
+        MDX(마크다운) 형식. 맨 위 <code>--- title: … ---</code> 블록은 그대로 두십시오. 이미지·링크는 아래 툴바로 넣을 수 있습니다.
       </p>
       <MdxEditor value={raw} onChange={setRaw} rows={20} />
       <div className="admin__save">
@@ -394,7 +394,7 @@ function PostsEditor({ initial }: { initial: string | null }) {
             <button onClick={() => setEditing(p.slug)}>편집</button>
             <button
               onClick={async () => {
-                if (confirm(`'${p.title}' 글을 삭제할까요? (파일이 지워집니다)`)) {
+                if (confirm(`'${p.title}' 글을 삭제하시겠습니까? (파일이 지워집니다)`)) {
                   await adminApi.delPost(p.slug)
                   reload()
                 }
@@ -436,7 +436,7 @@ function PostForm({ slug, onDone }: { slug: string | null; onDone: () => void })
   useEffect(() => {
     if (isNew) {
       setDate(localDateTimeNow())
-      setBody('여기에 내용을 작성하세요.\n')
+      setBody('여기에 내용을 작성합니다.\n')
       return
     }
     adminApi.getPost(slug!).then((d) => {

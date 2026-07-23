@@ -27,7 +27,7 @@ export default function Home() {
 
           {livePosts.length === 0 ? (
             <p className="muted" style={{ paddingTop: '2rem' }}>
-              아직 작성된 글이 없습니다. 왼쪽 카테고리부터 하나씩 채워보세요.
+              아직 작성된 글이 없습니다. 왼쪽 카테고리부터 하나씩 채워 나가면 됩니다.
             </p>
           ) : (
             <>
