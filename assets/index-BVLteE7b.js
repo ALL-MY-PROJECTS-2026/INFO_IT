@@ -16,7 +16,7 @@ import{r as d,a as he,L as f,N as xe,u as O,O as je,R as S,b as Y,c as ue,d as b
 `]}),`
 `,e.jsx(s.p,{children:'핵심은 **"한 번 답하고 끝"이 아니라 "목표를 이룰 때까지 스스로 여러 번 움직인다"**는 점입니다.'}),`
 `,e.jsx(s.h2,{id:"챗봇과-무엇이-다른가요",children:e.jsx(s.a,{href:"#챗봇과-무엇이-다른가요",children:"챗봇과 무엇이 다른가요?"})}),`
-`,e.jsx(s.p,{children:e.jsx(s.img,{src:"/uploads/itnews-agent-diagram.png",alt:"챗봇(안내데스크)과 AI 에이전트(비서)의 차이를 비교한 그림"})}),`
+`,e.jsx(s.p,{children:e.jsx(s.img,{src:"/uploads/itnews-agent-diagram-v2.png",alt:"챗봇(안내데스크)과 AI 에이전트(비서)의 차이를 비교한 그림"})}),`
 `,e.jsxs(s.table,{children:[e.jsx(s.thead,{children:e.jsxs(s.tr,{children:[e.jsx(s.th,{children:"구분"}),e.jsx(s.th,{children:"챗봇"}),e.jsx(s.th,{children:"AI 에이전트"})]})}),e.jsxs(s.tbody,{children:[e.jsxs(s.tr,{children:[e.jsx(s.td,{children:"하는 일"}),e.jsx(s.td,{children:"물으면 답한다"}),e.jsxs(s.td,{children:["목표를 주면 ",e.jsx(s.strong,{children:"끝까지 처리"}),"한다"]})]}),e.jsxs(s.tr,{children:[e.jsx(s.td,{children:"행동"}),e.jsx(s.td,{children:"말(텍스트)만"}),e.jsxs(s.td,{children:["도구를 ",e.jsx(s.strong,{children:"직접 사용"}),"(검색·예약·파일 작업 등)"]})]}),e.jsxs(s.tr,{children:[e.jsx(s.td,{children:"단계"}),e.jsx(s.td,{children:"한 번의 대답"}),e.jsxs(s.td,{children:[e.jsx(s.strong,{children:"여러 단계"}),"를 스스로 반복"]})]}),e.jsxs(s.tr,{children:[e.jsx(s.td,{children:"비유"}),e.jsx(s.td,{children:"안내데스크"}),e.jsx(s.td,{children:"비서"})]})]})]}),`
 `,e.jsxs(s.p,{children:['챗봇은 "무엇을 하라"고 알려 주고, 에이전트는 그걸 ',e.jsx(s.strong,{children:"대신 실행"}),"합니다. 그래서 에이전트는 보통 ",e.jsx(s.strong,{children:"도구(웹 검색, 앱, 코드 실행 등)를 쓸 수 있는 권한"}),"을 함께 받습니다."]}),`
 `,e.jsx(s.h2,{id:"왜-지금-화제인가요",children:e.jsx(s.a,{href:"#왜-지금-화제인가요",children:"왜 지금 화제인가요?"})}),`
