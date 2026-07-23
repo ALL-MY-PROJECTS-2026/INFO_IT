@@ -1,4 +1,5 @@
 import type { ComponentProps } from 'react'
+import Quiz from '../components/Quiz'
 
 /**
  * 글·페이지 MDX 안의 이미지/링크가 dev('/')·프로덕션('/INFO_IT/') 양쪽에서 깨지지 않도록,
@@ -44,4 +45,4 @@ function A({ href: rawHref, children, ...rest }: ComponentProps<'a'>) {
   )
 }
 
-export const mdxComponents = { img: Img, a: A }
+export const mdxComponents = { img: Img, a: A, Quiz }
