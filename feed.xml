@@ -7,6 +7,13 @@
     <language>ko</language>
     <atom:link href="https://all-my-projects-2026.github.io/INFO_IT/feed.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>패스키(passkey)란 무엇인가 — 비밀번호가 사라지는 이유</title>
+      <link>https://all-my-projects-2026.github.io/INFO_IT/posts/passkey-passwordless-login</link>
+      <guid isPermaLink="true">https://all-my-projects-2026.github.io/INFO_IT/posts/passkey-passwordless-login</guid>
+      <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
+      <description>구글·애플·네이버가 밀고 있는 패스키를 초보 눈높이로 정리합니다. 비밀번호와 뭐가 다른지, 왜 가짜 사이트에 안 당하는지, 지금 무엇을 하면 되는지까지 쉽게 풀었습니다.</description>
+    </item>
+    <item>
       <title>INFO IT 블로그를 시작하며</title>
       <link>https://all-my-projects-2026.github.io/INFO_IT/posts/welcome</link>
       <guid isPermaLink="true">https://all-my-projects-2026.github.io/INFO_IT/posts/welcome</guid>
