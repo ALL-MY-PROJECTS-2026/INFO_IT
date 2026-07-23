@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://all-my-projects-2026.github.io/INFO_IT/sitemap.xml
+Sitemap: https://pancoit.site/sitemap.xml

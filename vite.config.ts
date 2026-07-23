@@ -11,10 +11,9 @@ import rehypeShiki from '@shikijs/rehype'
 import { adminApiPlugin } from './vite-admin.mjs'
 
 export default defineConfig(({ command, isSsrBuild }) => ({
-  // GitHub Pages 프로젝트 페이지는 /INFO_IT/ 하위에서 서빙됨.
-  // build 시 자동으로 '/INFO_IT/'(자산·라우터 basename 모두 이 값 사용).
-  // dev(vite) 는 '/'. VITE_BASE 로 오버라이드 가능(커스텀 도메인 배포 시 '/').
-  base: process.env.VITE_BASE || (command === 'build' ? '/INFO_IT/' : '/'),
+  // 커스텀 도메인(pancoit.site)은 루트('/')로 서빙되므로 base 는 '/'.
+  // (github.io 프로젝트 경로 /INFO_IT/ 로 되돌리려면 VITE_BASE=/INFO_IT/ 로 빌드)
+  base: process.env.VITE_BASE || '/',
   build: {
     // 렌더 최적화: react 런타임을 별도 청크로 분리(앱 코드 변경과 무관하게 캐싱 유지).
     // SSR 빌드는 단일 엔트리라 manualChunks 미적용.
