@@ -10,7 +10,7 @@ import rehypeShiki from '@shikijs/rehype'
 // @ts-expect-error - JS 플러그인(타입 선언 없음), dev 전용 관리자 API
 import { adminApiPlugin } from './vite-admin.mjs'
 
-export default defineConfig(({ command, isSsrBuild }) => ({
+export default defineConfig(({ isSsrBuild }) => ({
   // 커스텀 도메인(pancoit.site)은 루트('/')로 서빙되므로 base 는 '/'.
   // (github.io 프로젝트 경로 /INFO_IT/ 로 되돌리려면 VITE_BASE=/INFO_IT/ 로 빌드)
   base: process.env.VITE_BASE || '/',
