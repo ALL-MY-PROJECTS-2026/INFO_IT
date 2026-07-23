@@ -2,42 +2,42 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>PANCO_IT</title>
-    <link>https://all-my-projects-2026.github.io/INFO_IT/</link>
+    <link>https://pancoit.site/</link>
     <description>어려운 IT를 초·중·고 누구나 이해할 수 있게, 그림과 비유로 쉽고 친근하게 풀어주는 블로그예요. 하나씩 차근차근 같이 배워요!</description>
     <language>ko</language>
-    <atom:link href="https://all-my-projects-2026.github.io/INFO_IT/feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://pancoit.site/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>패스키(passkey)란 무엇인가 — 비밀번호가 사라지는 이유</title>
-      <link>https://all-my-projects-2026.github.io/INFO_IT/posts/passkey-passwordless-login</link>
-      <guid isPermaLink="true">https://all-my-projects-2026.github.io/INFO_IT/posts/passkey-passwordless-login</guid>
+      <link>https://pancoit.site/posts/passkey-passwordless-login</link>
+      <guid isPermaLink="true">https://pancoit.site/posts/passkey-passwordless-login</guid>
       <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
       <description>구글·애플·네이버가 밀고 있는 패스키를 초보 눈높이로 정리합니다. 비밀번호와 뭐가 다른지, 왜 가짜 사이트에 안 당하는지, 지금 무엇을 하면 되는지까지 쉽게 풀었습니다.</description>
     </item>
     <item>
       <title>INFO IT 블로그를 시작하며</title>
-      <link>https://all-my-projects-2026.github.io/INFO_IT/posts/welcome</link>
-      <guid isPermaLink="true">https://all-my-projects-2026.github.io/INFO_IT/posts/welcome</guid>
+      <link>https://pancoit.site/posts/welcome</link>
+      <guid isPermaLink="true">https://pancoit.site/posts/welcome</guid>
       <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
       <description>이 블로그가 어떤 IT 지식을 어떤 방식으로 다루는지, 그리고 이 사이트가 어떻게 만들어졌는지 소개합니다.</description>
     </item>
     <item>
       <title>PANCO_IT 블로그를 열었어요!</title>
-      <link>https://all-my-projects-2026.github.io/INFO_IT/posts/news-panco-open</link>
-      <guid isPermaLink="true">https://all-my-projects-2026.github.io/INFO_IT/posts/news-panco-open</guid>
+      <link>https://pancoit.site/posts/news-panco-open</link>
+      <guid isPermaLink="true">https://pancoit.site/posts/news-panco-open</guid>
       <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
       <description>초·중·고 누구나 이해할 수 있는 쉬운 IT 블로그, PANCO_IT가 문을 열었습니다.</description>
     </item>
     <item>
       <title>CSR vs SSR vs SSG — SEO 관점에서 뭘 골라야 할까</title>
-      <link>https://all-my-projects-2026.github.io/INFO_IT/posts/csr-vs-ssg-seo</link>
-      <guid isPermaLink="true">https://all-my-projects-2026.github.io/INFO_IT/posts/csr-vs-ssg-seo</guid>
+      <link>https://pancoit.site/posts/csr-vs-ssg-seo</link>
+      <guid isPermaLink="true">https://pancoit.site/posts/csr-vs-ssg-seo</guid>
       <pubDate>Mon, 20 Jul 2026 00:00:00 GMT</pubDate>
       <description>React 앱의 세 가지 렌더링 방식을 검색엔진 최적화 관점에서 비교하고, 블로그·콘텐츠 사이트에 적합한 선택을 정리합니다.</description>
     </item>
     <item>
       <title>Core Web Vitals 2026 — LCP, INP, CLS 한눈에 정리</title>
-      <link>https://all-my-projects-2026.github.io/INFO_IT/posts/core-web-vitals-2026</link>
-      <guid isPermaLink="true">https://all-my-projects-2026.github.io/INFO_IT/posts/core-web-vitals-2026</guid>
+      <link>https://pancoit.site/posts/core-web-vitals-2026</link>
+      <guid isPermaLink="true">https://pancoit.site/posts/core-web-vitals-2026</guid>
       <pubDate>Sat, 18 Jul 2026 00:00:00 GMT</pubDate>
       <description>2026년에도 유효한 구글 Core Web Vitals 세 지표의 목표치와, 블로그에서 실제로 적용할 수 있는 최적화 방법을 정리합니다.</description>
     </item>
