@@ -16,7 +16,9 @@ export default function Sidebar() {
   const decoded = decodeURIComponent(pathname)
   const allActive = decoded === '/posts' || decoded === '/'
 
-  const visible = site.categories.filter((c) => postCountByCategory(c.label) > 0)
+  // 관리자(localhost·dev)에선 구조 확인용으로 모든 카테고리를 노출한다.
+  // 실제 사이트(프로덕션)에선 글이 있는 카테고리만 노출(빈 카테고리 숨김 → thin-page 방지).
+  const visible = site.categories.filter((c) => import.meta.env.DEV || postCountByCategory(c.label) > 0)
 
   // 배열 순서 그대로: group 없는 카테고리는 평면 항목, 같은 group 은 첫 등장 위치에 묶어
   // 하나의 순서 리스트(blocks)로 만든다 → 관리자에서 정렬한 순서가 그대로 반영된다.
