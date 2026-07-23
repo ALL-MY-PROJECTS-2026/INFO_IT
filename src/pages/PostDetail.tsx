@@ -115,7 +115,9 @@ export default function PostDetail() {
           <AdUnit slot="post-bottom" />
         </article>
 
-        <TableOfContents containerId={ARTICLE_ID} />
+        {/* key={post.slug}: 다른 글로 이동하면 TOC 를 재마운트해 새 글의 heading 을
+            다시 읽는다. (없으면 이전 글의 목차·앵커가 그대로 남아 클릭이 안 됨) */}
+        <TableOfContents key={post.slug} containerId={ARTICLE_ID} />
       </div>
 
       {related.length > 0 && (
