@@ -61,25 +61,25 @@ import{r as d,a as de,L as f,N as he,u as q,O as xe,R as S,b as Q,c as je,d as b
 `,e.jsx(s.p,{children:"짧습니다. 이제 이 네 줄을 하나씩 풀어 보겠습니다."}),`
 `,e.jsx(s.h2,{id:"한-줄씩-뜯어보기",children:e.jsx(s.a,{href:"#한-줄씩-뜯어보기",children:"한 줄씩 뜯어보기"})}),`
 `,e.jsx(s.p,{children:e.jsx(s.img,{src:"/uploads/java-hello-anatomy.png",alt:"HelloWorld 코드를 class·main·System.out.println 세 부분으로 나눠 설명한 다이어그램"})}),`
-`,e.jsxs(s.p,{children:[e.jsxs(s.strong,{children:["① ",e.jsx(s.code,{children:"public class HelloWorld {"})]}),`\r
+`,e.jsxs(s.p,{children:[e.jsxs(s.strong,{children:["① ",e.jsx(s.code,{children:"public class HelloWorld {"})]}),`
 자바는 모든 코드를 `,e.jsx(s.strong,{children:"클래스(class)라는 상자"})," 안에 담습니다. 상자 이름이 ",e.jsx(s.code,{children:"HelloWorld"}),"입니다."]}),`
 `,e.jsxs(s.blockquote,{children:[`
 `,e.jsxs(s.p,{children:[e.jsx(s.strong,{children:"쉽게 —"})," 클래스는 ",e.jsx(s.strong,{children:"공책의 표지"}),"라고 생각하면 됩니다. 표지에 제목(",e.jsx(s.code,{children:"HelloWorld"}),")을 적고, 그 안쪽에 내용을 채우는 것입니다. 여는 중괄호 ",e.jsx(s.code,{children:"{"}),"부터 맨 아래 닫는 ",e.jsx(s.code,{children:"}"}),"까지가 이 공책의 속입니다."]}),`
 `]}),`
-`,e.jsxs(s.p,{children:[e.jsxs(s.strong,{children:["② ",e.jsx(s.code,{children:"public static void main(String[] args) {"})]}),`\r
+`,e.jsxs(s.p,{children:[e.jsxs(s.strong,{children:["② ",e.jsx(s.code,{children:"public static void main(String[] args) {"})]}),`
 `,e.jsx(s.code,{children:"main"}),"은 ",e.jsx(s.strong,{children:"프로그램이 시작되는 지점"}),"입니다."]}),`
 `,e.jsxs(s.blockquote,{children:[`
 `,e.jsxs(s.p,{children:[e.jsx(s.strong,{children:"쉽게 —"})," ",e.jsx(s.code,{children:"main"}),"은 ",e.jsx(s.strong,{children:"책의 1페이지"}),"입니다. 컴퓨터는 프로그램을 켜면 무조건 ",e.jsx(s.code,{children:"main"}),"부터 찾아 읽기 시작합니다. ",e.jsx(s.code,{children:"main"}),'이 없으면 "어디부터 읽어야 하지?" 하고 멈춰 버립니다.']}),`
 `]}),`
 `,e.jsxs(s.p,{children:["지금은 ",e.jsx(s.code,{children:"public static void ..."})," 같은 앞부분은 ",e.jsx(s.strong,{children:'"main을 쓰려면 따라오는 주문"'})," 정도로 외워 두면 됩니다. 뜻은 뒤 편에서 하나씩 배웁니다."]}),`
-`,e.jsxs(s.p,{children:[e.jsxs(s.strong,{children:["③ ",e.jsx(s.code,{children:'System.out.println("Hello, World!");'})]}),`\r
+`,e.jsxs(s.p,{children:[e.jsxs(s.strong,{children:["③ ",e.jsx(s.code,{children:'System.out.println("Hello, World!");'})]}),`
 이 한 줄이 `,e.jsx(s.strong,{children:"진짜 일을 하는 부분"}),"입니다. 화면에 글자를 찍습니다."]}),`
 `,e.jsxs(s.ul,{children:[`
 `,e.jsxs(s.li,{children:[e.jsx(s.code,{children:"System.out"})," — 화면(모니터)을 가리킵니다."]}),`
 `,e.jsxs(s.li,{children:[e.jsx(s.code,{children:"println"}),' — "한 줄 출력하고 줄 바꿈"이라는 뜻입니다(print + line).']}),`
 `,e.jsxs(s.li,{children:[e.jsx(s.code,{children:'"Hello, World!"'})," — 큰따옴표 안의 글자가 그대로 화면에 나옵니다."]}),`
 `]}),`
-`,e.jsxs(s.p,{children:[e.jsxs(s.strong,{children:["④ ",e.jsx(s.code,{children:"}"})," ",e.jsx(s.code,{children:"}"})]}),`\r
+`,e.jsxs(s.p,{children:[e.jsxs(s.strong,{children:["④ ",e.jsx(s.code,{children:"}"})," ",e.jsx(s.code,{children:"}"})]}),`
 열었던 중괄호를 닫아 상자를 마무리합니다. `,e.jsx(s.code,{children:"main"}),"의 ",e.jsx(s.code,{children:"}"})," 하나, ",e.jsx(s.code,{children:"class"}),"의 ",e.jsx(s.code,{children:"}"})," 하나입니다."]}),`
 `,e.jsx(s.h2,{id:"실행은-어떻게-되나요",children:e.jsx(s.a,{href:"#실행은-어떻게-되나요",children:"실행은 어떻게 되나요?"})}),`
 `,e.jsxs(s.p,{children:["내가 쓴 자바 코드는 사람 눈에는 읽히지만, 컴퓨터는 바로 이해하지 못합니다. ",e.jsx(s.strong,{children:"번역 단계"}),"를 거칩니다."]}),`
@@ -109,15 +109,15 @@ import{r as d,a as de,L as f,N as he,u as q,O as xe,R as S,b as Q,c as je,d as b
 `,e.jsx(e.Fragment,{children:e.jsx(s.pre,{className:"shiki shiki-themes github-light github-dark",style:{backgroundColor:"#fff","--shiki-dark-bg":"#24292e",color:"#24292e","--shiki-dark":"#e1e4e8"},tabIndex:"0",children:e.jsxs(s.code,{children:[e.jsxs(s.span,{className:"line",children:[e.jsx(s.span,{style:{color:"#24292E","--shiki-dark":"#E1E4E8"},children:"System.out."}),e.jsx(s.span,{style:{color:"#6F42C1","--shiki-dark":"#B392F0"},children:"println"}),e.jsx(s.span,{style:{color:"#24292E","--shiki-dark":"#E1E4E8"},children:"("}),e.jsx(s.span,{style:{color:"#032F62","--shiki-dark":"#9ECBFF"},children:'"안녕"'}),e.jsx(s.span,{style:{color:"#24292E","--shiki-dark":"#E1E4E8"},children:");"})]}),`
 `,e.jsxs(s.span,{className:"line",children:[e.jsx(s.span,{style:{color:"#24292E","--shiki-dark":"#E1E4E8"},children:"System.out."}),e.jsx(s.span,{style:{color:"#6F42C1","--shiki-dark":"#B392F0"},children:"println"}),e.jsx(s.span,{style:{color:"#24292E","--shiki-dark":"#E1E4E8"},children:"("}),e.jsx(s.span,{style:{color:"#032F62","--shiki-dark":"#9ECBFF"},children:'"하세요"'}),e.jsx(s.span,{style:{color:"#24292E","--shiki-dark":"#E1E4E8"},children:");"})]})]})})}),`
 `,e.jsx(s.p,{children:"결과:"}),`
-`,e.jsx(s.pre,{children:e.jsx(s.code,{children:`안녕\r
+`,e.jsx(s.pre,{children:e.jsx(s.code,{children:`안녕
 하세요
 `})}),`
 `,e.jsxs(s.p,{children:[e.jsx(s.code,{children:"ln"}),'이 붙으면 "출력 후 엔터"라고 기억하면 됩니다.']}),`
 `,e.jsx(s.h2,{id:"한-장-정리",children:e.jsx(s.a,{href:"#한-장-정리",children:"한 장 정리"})}),`
 `,e.jsxs(s.table,{children:[e.jsx(s.thead,{children:e.jsxs(s.tr,{children:[e.jsx(s.th,{children:"조각"}),e.jsx(s.th,{children:"뜻"})]})}),e.jsxs(s.tbody,{children:[e.jsxs(s.tr,{children:[e.jsx(s.td,{children:e.jsx(s.code,{children:"class"})}),e.jsx(s.td,{children:"코드를 담는 상자(공책 표지)"})]}),e.jsxs(s.tr,{children:[e.jsx(s.td,{children:e.jsx(s.code,{children:"main"})}),e.jsx(s.td,{children:"프로그램이 시작하는 곳(1페이지)"})]}),e.jsxs(s.tr,{children:[e.jsx(s.td,{children:e.jsx(s.code,{children:'System.out.println("…")'})}),e.jsx(s.td,{children:"화면에 한 줄 찍고 줄 바꿈"})]}),e.jsxs(s.tr,{children:[e.jsx(s.td,{children:e.jsx(s.code,{children:";"})}),e.jsx(s.td,{children:"문장의 마침표(빼먹으면 에러)"})]})]})]}),`
-`,e.jsxs(s.p,{children:[e.jsx(s.strong,{children:"이것만 기억하면 됩니다."}),`\r
-① 자바 코드는 `,e.jsx(s.code,{children:"class"})," 상자 안에 담고, 컴퓨터는 ",e.jsx(s.code,{children:"main"}),`부터 읽습니다.\r
-② 화면 출력은 `,e.jsx(s.code,{children:'System.out.println("…")'}),`입니다.\r
+`,e.jsxs(s.p,{children:[e.jsx(s.strong,{children:"이것만 기억하면 됩니다."}),`
+① 자바 코드는 `,e.jsx(s.code,{children:"class"})," 상자 안에 담고, 컴퓨터는 ",e.jsx(s.code,{children:"main"}),`부터 읽습니다.
+② 화면 출력은 `,e.jsx(s.code,{children:'System.out.println("…")'}),`입니다.
 ③ 문장 끝 `,e.jsx(s.code,{children:";"}),", 대소문자, 클래스명과 파일명 일치 — 이 셋만 조심하면 첫 에러의 90%는 피합니다."]}),`
 `,e.jsx(s.h2,{id:"미니-퀴즈",children:e.jsx(s.a,{href:"#미니-퀴즈",children:"미니 퀴즈"})}),`
 `,e.jsx(s.p,{children:"개념을 제대로 잡았는지 직접 풀어 봅니다. 정답은 눌러야 나옵니다."}),`
