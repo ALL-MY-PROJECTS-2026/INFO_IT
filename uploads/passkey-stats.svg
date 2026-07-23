@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" font-family="'Noto Sans KR',system-ui,'Malgun Gothic',sans-serif" aria-label="숫자 강조: 전 세계 활성 패스키 약 50억 개, 상위 100대 사이트 중 48퍼센트 지원, 구글 애플 MS 네이버 카카오 등 5곳 이상 지원. 2026년 7월 FIDO 얼라이언스 추산.">
+  <title>패스키 현황 숫자</title>
+  <rect x="40" y="30" width="360" height="250" rx="16" fill="#0d1117"/>
+  <text x="220" y="170" font-size="76" font-weight="900" fill="#ffffff" text-anchor="middle">50억</text>
+  <text x="220" y="228" font-size="23" fill="#c3cad6" text-anchor="middle">전 세계 활성 패스키</text>
+
+  <rect x="420" y="30" width="360" height="250" rx="16" fill="#f8f9fb" stroke="#eceef1" stroke-width="2"/>
+  <text x="600" y="172" font-size="76" font-weight="900" fill="#2563eb" text-anchor="middle">48%</text>
+  <text x="600" y="228" font-size="23" fill="#5c6673" text-anchor="middle">상위 100대 사이트 지원</text>
+
+  <rect x="800" y="30" width="360" height="250" rx="16" fill="#f8f9fb" stroke="#eceef1" stroke-width="2"/>
+  <text x="980" y="170" font-size="68" font-weight="900" fill="#059669" text-anchor="middle">5곳+</text>
+  <text x="980" y="226" font-size="20" fill="#5c6673" text-anchor="middle">구글·애플·MS·네이버·카카오</text>
+
+  <text x="600" y="360" font-size="21" fill="#9aa4b2" text-anchor="middle">기준: 2026년 7월 · FIDO 얼라이언스 추산</text>
+</svg>
