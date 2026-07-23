@@ -17,16 +17,20 @@ export default function Sidebar() {
   const allActive = decoded === '/posts' || decoded === '/'
 
   const visible = site.categories.filter((c) => postCountByCategory(c.label) > 0)
-  const ungrouped = visible.filter((c) => !c.group)
 
-  // group 이 있는 카테고리를 첫 등장 순서대로 묶기
-  const groups: { name: string; items: Cat[] }[] = []
+  // 배열 순서 그대로: group 없는 카테고리는 평면 항목, 같은 group 은 첫 등장 위치에 묶어
+  // 하나의 순서 리스트(blocks)로 만든다 → 관리자에서 정렬한 순서가 그대로 반영된다.
+  type Block = { type: 'item'; cat: Cat } | { type: 'group'; name: string; items: Cat[] }
+  const blocks: Block[] = []
   for (const c of visible) {
-    if (!c.group) continue
-    let g = groups.find((x) => x.name === c.group)
+    if (!c.group) {
+      blocks.push({ type: 'item', cat: c })
+      continue
+    }
+    let g = blocks.find((b): b is Extract<Block, { type: 'group' }> => b.type === 'group' && b.name === c.group)
     if (!g) {
-      g = { name: c.group, items: [] }
-      groups.push(g)
+      g = { type: 'group', name: c.group, items: [] }
+      blocks.push(g)
     }
     g.items.push(c)
   }
@@ -56,18 +60,20 @@ export default function Sidebar() {
           <span className="count">{livePosts.length}</span>
         </Link>
 
-        {(ungrouped.length > 0 || groups.length > 0) && (
+        {blocks.length > 0 && (
           <div className="cat-divider" role="separator" aria-hidden="true" />
         )}
 
-        {ungrouped.map(item)}
-
-        {groups.map((g) => (
-          <div className="cat-group" key={g.name}>
-            <div className="cat-group__title">{g.name}</div>
-            {g.items.map(item)}
-          </div>
-        ))}
+        {blocks.map((b) =>
+          b.type === 'item' ? (
+            item(b.cat)
+          ) : (
+            <div className="cat-group" key={`group-${b.name}`}>
+              <div className="cat-group__title">{b.name}</div>
+              {b.items.map(item)}
+            </div>
+          ),
+        )}
       </nav>
     </aside>
   )
