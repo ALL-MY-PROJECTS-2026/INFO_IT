@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 660" width="1200" height="660" role="img" aria-label="비밀번호와 패스키 비교">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <style>
+    .f{font-family:Pretendard,'Pretendard Variable',-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif}
+    .m{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Consolas,monospace}
+    .lbl{font-size:17px;fill:#6e7681}
+    .val{font-size:23px;font-weight:600;fill:#e6edf3}
+  </style>
+
+  <rect width="1200" height="660" fill="#0d1117"/>
+  <rect width="1200" height="660" fill="url(#grid)"/>
+
+  <rect x="72" y="60" width="4" height="24" rx="2" fill="#f0b429"/>
+  <text class="m" x="92" y="79" font-size="18" letter-spacing="3" fill="#8b949e">비교</text>
+  <text class="f" x="72" y="132" font-size="42" font-weight="700" fill="#e6edf3">서버에 무엇이 저장되느냐</text>
+
+  <!-- left card -->
+  <g transform="translate(72,180)">
+    <rect x="0" y="0" width="500" height="412" rx="18" fill="#161b22" stroke="#3d2226" stroke-width="1.5"/>
+    <rect x="0" y="0" width="500" height="70" rx="18" fill="#241519"/>
+    <rect x="0" y="52" width="500" height="18" fill="#241519"/>
+    <circle cx="40" cy="35" r="9" fill="#f97583"/>
+    <text class="f" x="64" y="43" font-size="26" font-weight="700" fill="#f97583">비밀번호</text>
+
+    <g transform="translate(40,112)">
+      <text class="f lbl" x="0" y="0">서버에 저장되는 것</text>
+      <text class="f val" x="0" y="34">비밀번호(또는 변환값)</text>
+      <line x1="0" y1="62" x2="420" y2="62" stroke="#21262d"/>
+      <text class="f lbl" x="0" y="102">진짜 비밀을 가진 쪽</text>
+      <text class="f val" x="0" y="136">서버와 나, 둘 다</text>
+      <line x1="0" y1="164" x2="420" y2="164" stroke="#21262d"/>
+      <text class="f lbl" x="0" y="204">유출됐을 때</text>
+      <text class="f val" x="0" y="238">계정이 그대로 위험</text>
+      <line x1="0" y1="266" x2="420" y2="266" stroke="#21262d"/>
+    </g>
+    <rect x="40" y="330" width="420" height="46" rx="10" fill="#2a171b"/>
+    <text class="f" x="250" y="359" font-size="21" font-weight="600" fill="#f97583" text-anchor="middle">가짜 사이트에 잘 속음</text>
+  </g>
+
+  <!-- right card -->
+  <g transform="translate(628,180)">
+    <rect x="0" y="0" width="500" height="412" rx="18" fill="#161b22" stroke="#1f3d6b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="500" height="70" rx="18" fill="#111f34"/>
+    <rect x="0" y="52" width="500" height="18" fill="#111f34"/>
+    <circle cx="40" cy="35" r="9" fill="#6ea8fe"/>
+    <text class="f" x="64" y="43" font-size="26" font-weight="700" fill="#6ea8fe">패스키</text>
+
+    <g transform="translate(40,112)">
+      <text class="f lbl" x="0" y="0">서버에 저장되는 것</text>
+      <text class="f val" x="0" y="34">공개 키만</text>
+      <line x1="0" y1="62" x2="420" y2="62" stroke="#21262d"/>
+      <text class="f lbl" x="0" y="102">진짜 비밀을 가진 쪽</text>
+      <text class="f val" x="0" y="136">내 기기만 (개인 키)</text>
+      <line x1="0" y1="164" x2="420" y2="164" stroke="#21262d"/>
+      <text class="f lbl" x="0" y="204">유출됐을 때</text>
+      <text class="f val" x="0" y="238">공개 키만으론 로그인 불가</text>
+      <line x1="0" y1="266" x2="420" y2="266" stroke="#21262d"/>
+    </g>
+    <rect x="40" y="330" width="420" height="46" rx="10" fill="#0f2545"/>
+    <text class="f" x="250" y="359" font-size="21" font-weight="600" fill="#6ea8fe" text-anchor="middle">원리상 아예 안 통함</text>
+  </g>
+
+  <text class="m" x="1128" y="628" font-size="15" letter-spacing="2" fill="#39424e" text-anchor="end">PANCO_IT</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="패스키란 무엇인가 대표 이미지">
+  <defs>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M24 0H0V24" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.78" cy="0.3" r="0.6">
+      <stop offset="0" stop-color="#6ea8fe" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#6ea8fe" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <style>
+    .f{font-family:Pretendard,'Pretendard Variable',-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif}
+    .m{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Consolas,monospace}
+  </style>
+
+  <rect width="1200" height="675" fill="#0d1117"/>
+  <rect width="1200" height="675" fill="url(#grid)"/>
+  <rect width="1200" height="675" fill="url(#glow)"/>
+
+  <!-- eyebrow -->
+  <rect x="88" y="196" width="4" height="26" rx="2" fill="#f0b429"/>
+  <text class="m" x="108" y="216" font-size="19" letter-spacing="3" fill="#8b949e">IT소식 · 보안</text>
+
+  <!-- title -->
+  <text class="f" x="88" y="312" font-size="66" font-weight="700" fill="#e6edf3">패스키란 무엇인가</text>
+  <text class="f" x="88" y="394" font-size="66" font-weight="700" fill="#6ea8fe">비밀번호가 사라지는 이유</text>
+
+  <!-- sub -->
+  <text class="f" x="88" y="452" font-size="26" fill="#8b949e">지문 · 얼굴 · PIN으로 로그인하는 국제 표준, 3분 정리</text>
+
+  <!-- footer mark -->
+  <rect x="88" y="574" width="4" height="20" rx="2" fill="#30363d"/>
+  <text class="m" x="106" y="590" font-size="17" letter-spacing="2" fill="#576270">PANCO_IT</text>
+
+  <!-- device -->
+  <g transform="translate(792,132)">
+    <rect x="0" y="0" width="288" height="412" rx="34" fill="#161b22" stroke="#263041" stroke-width="1.5"/>
+    <rect x="14" y="14" width="260" height="384" rx="24" fill="#0d1117" stroke="#21262d"/>
+    <rect x="112" y="34" width="64" height="7" rx="3.5" fill="#21262d"/>
+
+    <!-- fingerprint -->
+    <g fill="none" stroke="#6ea8fe" stroke-linecap="round" stroke-width="4">
+      <path d="M144 250 m-14 0 a14 14 0 0 1 28 0" opacity="0.95"/>
+      <path d="M110 208 a34 34 0 0 1 68 0 v46" opacity="0.8"/>
+      <path d="M92 200 a52 52 0 0 1 104 0 v52" opacity="0.6"/>
+      <path d="M74 196 a70 70 0 0 1 140 0 v56" opacity="0.4"/>
+      <path d="M130 250 v26" opacity="0.95"/>
+      <path d="M178 254 v30" opacity="0.8"/>
+      <path d="M196 252 v34" opacity="0.6"/>
+    </g>
+
+    <rect x="56" y="322" width="176" height="44" rx="10" fill="#0f2545" stroke="#1f4b8f"/>
+    <text class="f" x="144" y="350" font-size="18" font-weight="600" fill="#6ea8fe" text-anchor="middle">개인 키 · 기기 안에만</text>
+  </g>
+</svg>
