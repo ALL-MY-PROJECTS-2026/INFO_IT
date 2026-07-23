@@ -7,6 +7,13 @@
     <language>ko</language>
     <atom:link href="https://pancoit.site/feed.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>자바 변수와 자료형 — 값을 담는 상자</title>
+      <link>https://pancoit.site/posts/java-variables</link>
+      <guid isPermaLink="true">https://pancoit.site/posts/java-variables</guid>
+      <pubDate>Fri, 24 Jul 2026 00:00:00 GMT</pubDate>
+      <description>자바의 변수와 자료형을 중학생도 이해할 수 있게 정리합니다. 변수는 값을 담는 상자, 자료형은 상자의 종류. 자주 틀리는 정수 나눗셈 함정까지 짬짬이 읽기 좋게 담았습니다.</description>
+    </item>
+    <item>
       <title>자바 첫 프로그램 — HelloWorld 찍어보기</title>
       <link>https://pancoit.site/posts/java-hello-world</link>
       <guid isPermaLink="true">https://pancoit.site/posts/java-hello-world</guid>
@@ -19,13 +26,6 @@
       <guid isPermaLink="true">https://pancoit.site/posts/ai-agent-vs-chatbot</guid>
       <pubDate>Thu, 23 Jul 2026 00:00:00 GMT</pubDate>
       <description>요즘 계속 들리는 &quot;AI 에이전트&quot;. 챗봇과 뭐가 다른지, 왜 화제인지, 나에게 무슨 의미인지 초보 눈높이로 정리했습니다.</description>
-    </item>
-    <item>
-      <title>자바 변수와 자료형 — 값을 담는 상자</title>
-      <link>https://pancoit.site/posts/java-variables</link>
-      <guid isPermaLink="true">https://pancoit.site/posts/java-variables</guid>
-      <pubDate>Wed, 22 Jul 2026 00:00:00 GMT</pubDate>
-      <description>자바의 변수와 자료형을 중학생도 이해할 수 있게 정리합니다. 변수는 값을 담는 상자, 자료형은 상자의 종류. 자주 틀리는 정수 나눗셈 함정까지 짬짬이 읽기 좋게 담았습니다.</description>
     </item>
   </channel>
 </rss>
