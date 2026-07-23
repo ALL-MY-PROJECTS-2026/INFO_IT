@@ -83,6 +83,10 @@ body {
   color: var(--text);
   line-height: 1.65;
   font-size: 18px;
+  /* 한국어: 어절(단어) 단위로만 줄을 바꿔 단어 중간에서 잘리지 않게 한다.
+     (normal 이면 한글은 글자 사이 아무 곳에서나 끊겨 가독성이 크게 떨어진다) */
+  word-break: keep-all;
+  overflow-wrap: break-word; /* 아주 긴 URL·영문 토큰은 예외적으로 끊어 오버플로 방지 */
   overflow-x: clip; /* 전체폭(100vw) 임베드가 가로 스크롤을 만들지 않도록 (sticky 안전) */
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -96,6 +100,21 @@ h3,
 .feature__title,
 .post-row__title {
   font-family: var(--font-head);
+}
+/* 줄바꿈 품질: 제목은 줄별 길이를 균형 있게(마지막 줄에 한 단어만 남는 현상 방지),
+   본문은 고아줄(orphan) 방지. 미지원 브라우저는 무시하므로 안전하다. */
+h1,
+h2,
+h3,
+.feature__title,
+.post-row__title,
+.post-card__title,
+.section-title h2 {
+  text-wrap: balance;
+}
+.prose p,
+.prose li {
+  text-wrap: pretty;
 }
 img,
 picture,
