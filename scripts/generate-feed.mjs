@@ -54,7 +54,11 @@ const feed = `<?xml version="1.0" encoding="UTF-8"?>
 ${items
   .map((p) => {
     const url = `${SITE_URL}/posts/${p.slug}`
-    const pub = p.date ? new Date(p.date + 'T00:00:00Z').toUTCString() : ''
+    // 날짜만이면 자정(UTC), "YYYY-MM-DDTHH:MM" 형태면 그 시각을 그대로 사용.
+    const hasTime = /[T ]\d{2}:\d{2}/.test(p.date)
+    const pub = p.date
+      ? new Date(hasTime ? p.date.replace(' ', 'T') : p.date + 'T00:00:00Z').toUTCString()
+      : ''
     return `    <item>
       <title>${xml(p.title)}</title>
       <link>${url}</link>

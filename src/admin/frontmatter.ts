@@ -27,6 +27,11 @@ export function parseFrontmatter(raw: string): { fm: Frontmatter; body: string }
 export function stringifyFrontmatter(fm: Frontmatter, body: string): string {
   const lines = Object.entries(fm)
     .filter(([, v]) => v !== undefined && v !== '' && !(Array.isArray(v) && v.length === 0))
-    .map(([k, v]) => (Array.isArray(v) ? `${k}: [${v.join(', ')}]` : `${k}: ${v}`))
+    .map(([k, v]) => {
+      if (Array.isArray(v)) return `${k}: [${v.join(', ')}]`
+      // 콜론(:) 등이 든 문자열은 따옴표로 감싸 YAML 이 문자열로 파싱하게 한다(날짜+시간 등).
+      if (typeof v === 'string' && /[:#]/.test(v)) return `${k}: "${v.replace(/"/g, '\\"')}"`
+      return `${k}: ${v}`
+    })
   return `---\n${lines.join('\n')}\n---\n\n${body.replace(/^\n+/, '')}\n`
 }

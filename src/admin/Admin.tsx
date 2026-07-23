@@ -7,6 +7,22 @@ import './admin.css'
 
 type Tab = 'structure' | 'pages' | 'posts'
 
+const pad2 = (n: number) => String(n).padStart(2, '0')
+
+/** 현재 로컬 시각을 datetime-local 값(YYYY-MM-DDTHH:MM)으로. */
+function localDateTimeNow(): string {
+  const d = new Date()
+  return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}T${pad2(d.getHours())}:${pad2(d.getMinutes())}`
+}
+
+/** 저장된 date 문자열을 datetime-local 입력값으로 정규화. 날짜만 있으면 T00:00 을 붙인다. */
+function toLocalDateTimeInput(raw: string): string {
+  if (!raw) return ''
+  const s = raw.replace(' ', 'T')
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s + 'T00:00'
+  return s.slice(0, 16)
+}
+
 /**
  * localhost 전용 관리자 패널. src/content 의 site.json·pages·posts 를 CRUD.
  * import.meta.env.DEV 에서만 라우팅되며 프로덕션 번들엔 포함되지 않는다.
@@ -419,7 +435,7 @@ function PostForm({ slug, onDone }: { slug: string | null; onDone: () => void })
 
   useEffect(() => {
     if (isNew) {
-      setDate(new Date().toISOString().slice(0, 10))
+      setDate(localDateTimeNow())
       setBody('여기에 내용을 작성하세요.\n')
       return
     }
@@ -427,7 +443,7 @@ function PostForm({ slug, onDone }: { slug: string | null; onDone: () => void })
       const { fm, body } = parseFrontmatter(d.raw)
       setTitle(String(fm.title || ''))
       setCategory(String(fm.category || ''))
-      setDate(String(fm.date || ''))
+      setDate(toLocalDateTimeInput(String(fm.date || '')))
       setDescription(String(fm.description || ''))
       setTags(Array.isArray(fm.tags) ? fm.tags.join(', ') : String(fm.tags || ''))
       setDraft(fm.draft === true)
@@ -496,8 +512,8 @@ function PostForm({ slug, onDone }: { slug: string | null; onDone: () => void })
         </select>
       </label>
       <label>
-        날짜
-        <input value={date} onChange={(e) => setDate(e.target.value)} placeholder="YYYY-MM-DD" />
+        날짜·시간
+        <input type="datetime-local" value={date} onChange={(e) => setDate(e.target.value)} />
       </label>
       <label>
         설명(SEO)

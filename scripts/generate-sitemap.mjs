@@ -37,7 +37,7 @@ if (existsSync(postsDir)) {
   for (const f of readdirSync(postsDir).filter((f) => f.endsWith('.mdx'))) {
     const fm = readFrontmatter(readFileSync(join(postsDir, f), 'utf-8'))
     if (fm.draft) continue // 준비 중 글은 사이트맵 제외
-    entries.push({ path: `/posts/${f.replace(/\.mdx$/, '')}`, lastmod: fm.date || today })
+    entries.push({ path: `/posts/${f.replace(/\.mdx$/, '')}`, lastmod: (fm.date || today).slice(0, 10) })
     if (fm.category) liveCategories.add(fm.category)
   }
 }
