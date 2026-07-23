@@ -1,54 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" role="img" aria-label="패스키 확산 현황 수치">
-  <defs>
-    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
-      <path d="M24 0H0V24" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
-    </pattern>
-  </defs>
-  <style>
-    .f{font-family:Pretendard,'Pretendard Variable',-apple-system,'Apple SD Gothic Neo','Noto Sans KR',sans-serif}
-    .m{font-family:'JetBrains Mono',ui-monospace,SFMono-Regular,Consolas,monospace}
-    .big{font-size:60px;font-weight:700;fill:#e6edf3}
-    .cap{font-size:18px;fill:#8b949e}
-    .note{font-size:15px;fill:#576270}
-  </style>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" role="img" font-family="'Noto Sans KR',system-ui,'Malgun Gothic',sans-serif" aria-label="숫자 강조: 전 세계 활성 패스키 약 50억 개, 상위 100대 사이트 중 48퍼센트 지원, 구글 애플 MS 네이버 카카오 등 5곳 이상 지원. 2026년 7월 FIDO 얼라이언스 추산.">
+  <title>패스키 현황 숫자</title>
+  <rect x="40" y="30" width="360" height="250" rx="16" fill="#0d1117"/>
+  <text x="220" y="170" font-size="76" font-weight="900" fill="#ffffff" text-anchor="middle">50억</text>
+  <text x="220" y="228" font-size="23" fill="#c3cad6" text-anchor="middle">전 세계 활성 패스키</text>
 
-  <rect width="1200" height="520" fill="#0d1117"/>
-  <rect width="1200" height="520" fill="url(#grid)"/>
+  <rect x="420" y="30" width="360" height="250" rx="16" fill="#f8f9fb" stroke="#eceef1" stroke-width="2"/>
+  <text x="600" y="172" font-size="76" font-weight="900" fill="#2563eb" text-anchor="middle">48%</text>
+  <text x="600" y="228" font-size="23" fill="#5c6673" text-anchor="middle">상위 100대 사이트 지원</text>
 
-  <rect x="72" y="56" width="4" height="24" rx="2" fill="#f0b429"/>
-  <text class="m" x="92" y="75" font-size="18" letter-spacing="3" fill="#8b949e">2026. 07 기준</text>
-  <text class="f" x="72" y="128" font-size="38" font-weight="700" fill="#e6edf3">패스키는 지금 어디까지 왔나</text>
+  <rect x="800" y="30" width="360" height="250" rx="16" fill="#f8f9fb" stroke="#eceef1" stroke-width="2"/>
+  <text x="980" y="170" font-size="68" font-weight="900" fill="#059669" text-anchor="middle">5곳+</text>
+  <text x="980" y="226" font-size="20" fill="#5c6673" text-anchor="middle">구글·애플·MS·네이버·카카오</text>
 
-  <!-- card 1 -->
-  <g transform="translate(72,180)">
-    <rect x="0" y="0" width="328" height="240" rx="16" fill="#161b22" stroke="#263041" stroke-width="1.5"/>
-    <rect x="0" y="0" width="328" height="4" rx="2" fill="#6ea8fe"/>
-    <text class="f big" x="32" y="104">약 50억</text>
-    <text class="f cap" x="32" y="146">전 세계 활성 패스키 수</text>
-    <line x1="32" y1="176" x2="296" y2="176" stroke="#21262d"/>
-    <text class="f note" x="32" y="204">FIDO 얼라이언스 추산 · 2026.05</text>
-  </g>
-
-  <!-- card 2 -->
-  <g transform="translate(436,180)">
-    <rect x="0" y="0" width="328" height="240" rx="16" fill="#161b22" stroke="#263041" stroke-width="1.5"/>
-    <rect x="0" y="0" width="328" height="4" rx="2" fill="#f0b429"/>
-    <text class="f big" x="32" y="104">48<tspan font-size="36">%</tspan></text>
-    <text class="f cap" x="32" y="146">상위 100대 사이트 지원률</text>
-    <rect x="32" y="170" width="264" height="10" rx="5" fill="#21262d"/>
-    <rect x="32" y="170" width="127" height="10" rx="5" fill="#f0b429"/>
-    <text class="f note" x="32" y="212">아직 절반은 비밀번호만 사용</text>
-  </g>
-
-  <!-- card 3 -->
-  <g transform="translate(800,180)">
-    <rect x="0" y="0" width="328" height="240" rx="16" fill="#161b22" stroke="#263041" stroke-width="1.5"/>
-    <rect x="0" y="0" width="328" height="4" rx="2" fill="#6ea8fe"/>
-    <text class="f big" x="32" y="104">5곳</text>
-    <text class="f cap" x="32" y="146">지금 켤 수 있는 주요 서비스</text>
-    <line x1="32" y1="176" x2="296" y2="176" stroke="#21262d"/>
-    <text class="f note" x="32" y="204">구글 · 애플 · MS · 네이버 · 카카오</text>
-  </g>
-
-  <text class="m" x="1128" y="486" font-size="15" letter-spacing="2" fill="#39424e" text-anchor="end">PANCO_IT</text>
+  <text x="600" y="360" font-size="21" fill="#9aa4b2" text-anchor="middle">기준: 2026년 7월 · FIDO 얼라이언스 추산</text>
 </svg>
