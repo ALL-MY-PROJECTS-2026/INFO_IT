@@ -831,7 +831,8 @@ a:hover {
 }
 /* 방문 통계(오늘/누적) — 사이드바 맨 위, 은은하게 한 줄. 클릭 아님(마우스오버 시 갱신주기 툴팁) */
 .sidebar-stats {
-  display: block;
+  position: relative;
+  display: inline-block;
   padding: 0 0.7rem;
   margin-bottom: 0.9rem;
   font-size: 0.72rem;
@@ -841,6 +842,33 @@ a:hover {
 }
 .sidebar-stats:hover {
   color: var(--text-muted);
+}
+/* 커스텀 툴팁(네이티브 title 대신 확실히 보이게) — 마우스오버 시 아래에 말풍선 */
+.sidebar-stats::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 0.7rem;
+  top: calc(100% + 6px);
+  z-index: 30;
+  white-space: nowrap;
+  padding: 0.3rem 0.55rem;
+  border-radius: 6px;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.7rem;
+  line-height: 1.2;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-2px);
+  transition: opacity 140ms var(--ease), transform 140ms var(--ease);
+  pointer-events: none;
+}
+.sidebar-stats:hover::after,
+.sidebar-stats:focus-visible::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 .sidebar-stats__row {
   display: inline-flex;
