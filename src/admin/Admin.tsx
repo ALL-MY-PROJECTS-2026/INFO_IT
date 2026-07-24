@@ -44,13 +44,13 @@ function GitDeployButton() {
       setOk(true)
       setStatus(
         r.committed
-          ? `✅ 배포 시작됨 (${r.head}) — 2~3분 뒤 라이브 반영`
-          : `✅ 변경 없음 · 기존 커밋 푸시됨 (${r.head})`,
+          ? `배포 시작됨 (${r.head}) — 2~3분 뒤 라이브 반영`
+          : `변경 없음 · 기존 커밋 푸시됨 (${r.head})`,
       )
       setMsg('')
     } catch (e) {
       setOk(false)
-      setStatus('❌ ' + (e as Error).message)
+      setStatus('오류: ' + (e as Error).message)
     } finally {
       setBusy(false)
     }
@@ -66,7 +66,7 @@ function GitDeployButton() {
         disabled={busy}
       />
       <button className="admin__deploy-btn" onClick={run} disabled={busy}>
-        {busy ? '⏳ 배포 중…' : '🚀 커밋 · 배포'}
+        {busy ? '배포 중…' : '커밋 · 배포'}
       </button>
       {status && (
         <span className={`admin__deploy-status ${ok === false ? 'err' : ok ? 'ok' : ''}`}>{status}</span>
@@ -88,7 +88,7 @@ export default function Admin() {
     <div className="admin container">
       <div className="admin__head">
         <h1>
-          🔧 관리자 모드 <span className="admin__badge">localhost 전용</span>
+          관리자 모드 <span className="admin__badge">localhost 전용</span>
         </h1>
         <GitDeployButton />
       </div>
@@ -189,9 +189,9 @@ function StructureEditor() {
     setStatus('저장 중…')
     try {
       await adminApi.putSite(site)
-      setStatus('✅ 저장됨 — 새로고침하면 반영됩니다')
+      setStatus('저장됨 — 새로고침하면 반영됩니다')
     } catch (e) {
-      setStatus('❌ ' + (e as Error).message)
+      setStatus('오류: ' + (e as Error).message)
     }
   }
 
@@ -374,9 +374,9 @@ function PagesEditor({ initial }: { initial: string }) {
     setStatus('저장 중…')
     try {
       await adminApi.putPage(slug, raw)
-      setStatus('✅ 저장됨 — 새로고침하면 반영됩니다')
+      setStatus('저장됨 — 새로고침하면 반영됩니다')
     } catch (e) {
-      setStatus('❌ ' + (e as Error).message)
+      setStatus('오류: ' + (e as Error).message)
     }
   }
 
@@ -507,7 +507,7 @@ function PostForm({ slug, onDone }: { slug: string | null; onDone: () => void })
   const save = async () => {
     const s = (isNew ? fileSlug : slug!).trim()
     if (!/^[a-z0-9-]+$/i.test(s)) {
-      setStatus('❌ 파일명(slug)은 영문/숫자/하이픈만 가능합니다')
+      setStatus('파일명(slug)은 영문/숫자/하이픈만 가능합니다')
       return
     }
     const fm: Frontmatter = { title, date }
@@ -519,10 +519,10 @@ function PostForm({ slug, onDone }: { slug: string | null; onDone: () => void })
     setStatus('저장 중…')
     try {
       await adminApi.putPost(s, stringifyFrontmatter(fm, body))
-      setStatus('✅ 저장됨')
+      setStatus('저장됨')
       onDone()
     } catch (e) {
-      setStatus('❌ ' + (e as Error).message)
+      setStatus('오류: ' + (e as Error).message)
     }
   }
 
