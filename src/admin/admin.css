@@ -24,17 +24,19 @@
   flex-wrap: wrap;
   justify-content: flex-end;
 }
-.admin__deploy-msg {
+/* .admin button(전역 규칙, 명시도 0-1-1)보다 이기도록 .admin 접두어로 명시도를 올린다 */
+.admin .admin__deploy-msg {
   height: 34px;
   min-width: 180px;
   padding: 0 0.6rem;
   border: 1px solid var(--border);
   border-radius: 7px;
+  font: inherit;
   font-size: 0.85rem;
   background: var(--surface-2);
   color: var(--text);
 }
-.admin__deploy-btn {
+.admin .admin__deploy-btn {
   height: 34px;
   padding: 0 0.95rem;
   border: none;
@@ -43,14 +45,16 @@
   color: #fff;
   font-weight: 700;
   font-size: 0.85rem;
+  line-height: 1;
   cursor: pointer;
   white-space: nowrap;
   transition: filter var(--dur) var(--ease), opacity var(--dur) var(--ease);
 }
-.admin__deploy-btn:hover:not(:disabled) {
+.admin .admin__deploy-btn:hover:not(:disabled) {
   filter: brightness(1.08);
+  border: none;
 }
-.admin__deploy-btn:disabled {
+.admin .admin__deploy-btn:disabled {
   opacity: 0.6;
   cursor: default;
 }
