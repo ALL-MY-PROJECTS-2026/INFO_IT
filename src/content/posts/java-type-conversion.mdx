@@ -1,0 +1,92 @@
+---
+title: 자바 형변환 — 다른 그릇에 옮겨 담기
+date: "2026-07-24T11:30"
+description: 자바의 형변환(타입 캐스팅)을 왕초보 눈높이로 정리합니다. 작은 그릇↔큰 그릇 비유로 자동/강제 변환을 쉽게, 소수 잘림 함정까지 짬짬이 읽기 좋게 담았습니다.
+category: JAVA
+series: JAVA1
+episode: 3
+tags: [자바, JAVA, 형변환, 캐스팅]
+cover: /uploads/java-type-conversion-hero.jpg
+draft: false
+---
+
+![화면 가득한 컬러 코드](/uploads/java-type-conversion-hero.jpg)
+
+*이미지 출처: Pexels · Pexels License*
+
+지난 편에서 값마다 담는 상자(자료형)가 다르다고 했습니다. 그럼 **다른 상자로 값을 옮겨 담고** 싶을 땐 어떻게 할까요? 그게 오늘의 주제, **형변환**입니다.
+
+## 형변환이 뭔가요?
+
+**형변환은 값을 다른 자료형으로 바꿔 담는 것**입니다.
+
+> **쉽게 —** 컵의 물을 대야에 붓는 건 쉽습니다(넘칠 일 없음). 반대로 대야 물을 컵에 부으면 넘칩니다. 형변환도 **작은 그릇 → 큰 그릇**은 그냥 되고, **큰 그릇 → 작은 그릇**은 조심해서 부어야 합니다.
+
+![형변환: 작은→큰은 자동, 큰→작은은 (int)로 지정하되 소수점 잘림](/uploads/java-type-conversion-typecast.png)
+
+## 자동 형변환 (작은 → 큰, 그냥 됨)
+
+정수를 소수 상자에 담으면 자바가 알아서 바꿔 줍니다.
+
+```java
+int a = 10;
+double b = a;      // int → double 자동
+System.out.println(b);   // 10.0
+```
+
+작은 그릇(`int`)의 값을 큰 그릇(`double`)에 부으면 넘칠 일이 없으니 **자동**입니다.
+
+## 강제 형변환 (큰 → 작은, 직접 지정)
+
+반대로 소수를 정수 상자에 담으려면, **"내가 책임지고 옮긴다"**고 직접 표시해야 합니다. 앞에 `(int)`를 붙입니다.
+
+```java
+double b = 3.9;
+int a = (int) b;   // 강제 변환
+System.out.println(a);   // 3  (소수점 버림!)
+```
+
+> **⚠️ 단골 함정 —** 큰 그릇 → 작은 그릇은 **소수점 아래가 잘립니다.** `(int) 3.9`는 반올림한 4가 아니라 **3**입니다. 넘치는 물을 버리는 셈입니다.
+
+## 숫자 ↔ 문자열 (실전에서 많이 씀)
+
+입력은 보통 글자(문자열)로 들어오니, 계산하려면 숫자로 바꿔야 합니다.
+
+```java
+String s = "25";
+int n = Integer.parseInt(s);   // 문자열 → 정수
+System.out.println(n + 5);     // 30
+
+int age = 15;
+String t = String.valueOf(age);   // 정수 → 문자열
+System.out.println(t + "살");      // 15살
+```
+
+> **함정 —** `"25" + 5`는 계산이 아니라 **글자 붙이기**라 `"255"`가 됩니다. 숫자 계산을 하려면 먼저 `parseInt`로 숫자로 바꿔야 합니다.
+
+## 한 장 정리
+
+| 상황 | 방법 | 주의 |
+|---|---|---|
+| 작은 → 큰(int→double) | 자동 | 그냥 됨 |
+| 큰 → 작은(double→int) | `(int)` 강제 | **소수점 잘림** |
+| 문자열 → 정수 | `Integer.parseInt` | 숫자만 들어 있어야 |
+| 정수 → 문자열 | `String.valueOf` | `+`는 글자 붙이기 |
+
+**이것만 기억하면 됩니다.** 작은 그릇→큰 그릇은 자동, 큰 그릇→작은 그릇은 `(int)`로 직접 옮기되 소수점이 잘립니다. 글자 `"25"`는 `parseInt`로 바꿔야 숫자로 계산됩니다.
+
+## 미니 퀴즈
+
+개념을 제대로 잡았는지 직접 풀어 봅니다. 정답은 눌러야 나옵니다.
+
+<Quiz questions={[
+  { type: 'ox', q: 'int를 double로 바꾸는 것은 자동으로 됩니다.', answer: true, explain: '작은 그릇(int)에서 큰 그릇(double)으로 옮기는 것은 넘칠 일이 없어 자동 형변환됩니다.' },
+  { type: 'ox', q: '(int) 3.9의 결과는 4입니다.', answer: false, explain: '큰 그릇에서 작은 그릇으로 옮기면 소수점 아래가 잘립니다. 반올림이 아니라 버림이라 3입니다.' },
+  { type: 'mc', q: '문자열 "25"를 정수로 바꾸는 방법은 무엇입니까?', options: ['String.valueOf', 'Integer.parseInt', '(int)', 'println'], answer: 1, explain: '문자열을 정수로 바꿀 때는 Integer.parseInt를 씁니다. String.valueOf는 반대로 숫자를 문자열로 바꿉니다.' },
+  { type: 'mc', q: '"25" + 5의 결과는 무엇입니까?', options: ['30', '"255"', '오류', '20'], answer: 1, explain: '문자열에 +를 쓰면 계산이 아니라 글자 붙이기(연결)가 되어 "255"가 됩니다.' },
+  { type: 'mc', q: '소수 3.9를 정수 상자에 담으려 합니다. 빈칸에 알맞은 것은?', code: 'int a = ______ 3.9;', options: ['(double)', '(int)', 'parseInt', 'valueOf'], answer: 1, explain: '큰 그릇(double)에서 작은 그릇(int)으로 강제 변환할 때는 앞에 (int)를 붙입니다. 단, 소수점은 잘립니다.' },
+]} />
+
+---
+
+*포켓코딩(JAVA1) 3편 · 예제 출처: 강사 개인 GitHub 저장소. 다음 편: 입력받기 — Scanner로 대화하기.*
