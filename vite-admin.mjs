@@ -11,6 +11,22 @@ import {
   mkdirSync,
 } from 'node:fs'
 import { resolve, sep } from 'node:path'
+import { execFile } from 'node:child_process'
+
+/** git 명령을 실행하고 {code, stdout, stderr} 로 반환(예외 던지지 않음). */
+function git(args, cwd) {
+  return new Promise((res) => {
+    execFile(
+      'git',
+      args,
+      // GIT_TERMINAL_PROMPT=0 → 자격증명 프롬프트로 멈추지 않고 즉시 실패(무한 대기 방지)
+      { cwd, env: { ...process.env, GIT_TERMINAL_PROMPT: '0' }, maxBuffer: 10_000_000 },
+      (err, stdout, stderr) => {
+        res({ code: err ? (err.code ?? 1) : 0, stdout: String(stdout || ''), stderr: String(stderr || '') })
+      },
+    )
+  })
+}
 
 const SLUG_RE = /^[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i
 const IMG_EXT = new Set(['png', 'jpg', 'jpeg', 'gif', 'webp', 'svg', 'avif'])
@@ -157,6 +173,55 @@ export function adminApiPlugin() {
               writeFileSync(outPath, Buffer.from(m[2], 'base64'))
               return send(200, { path: `/uploads/${finalName}` })
             }
+          }
+
+          // --- git 커밋 · 푸시 (localhost → GitHub → 자동 배포) ---
+          if (resource === 'git' && method === 'POST') {
+            let b = {}
+            try {
+              const raw = await readBody(req)
+              if (raw) b = JSON.parse(raw)
+            } catch {
+              b = {}
+            }
+            const message =
+              (typeof b.message === 'string' && b.message.trim()) ||
+              `관리자 업데이트: 콘텐츠 반영 ${new Date().toISOString().slice(0, 16).replace('T', ' ')}`
+
+            const add = await git(['add', '-A'], root)
+            if (add.code !== 0) return send(500, { error: 'git add 실패: ' + (add.stderr || add.stdout) })
+
+            // 스테이징된 변경이 있으면 커밋(없으면 커밋 생략 — 앞선 미푸시 커밋만 푸시)
+            const staged = await git(['diff', '--cached', '--quiet'], root)
+            let committed = false
+            if (staged.code !== 0) {
+              const c = await git(['commit', '-m', message], root)
+              if (c.code !== 0) return send(500, { error: 'git commit 실패: ' + (c.stderr || c.stdout) })
+              committed = true
+            }
+
+            const push = await git(['push', 'origin', 'HEAD'], root)
+            const head = (await git(['rev-parse', '--short', 'HEAD'], root)).stdout.trim()
+            if (push.code !== 0)
+              return send(500, {
+                error:
+                  'git push 실패: ' +
+                  (push.stderr || push.stdout || '자격증명/네트워크를 확인하세요') +
+                  ' (커밋은 ' +
+                  (committed ? '완료됨' : '없음') +
+                  ')',
+                committed,
+                head,
+              })
+
+            return send(200, {
+              ok: true,
+              committed,
+              pushed: true,
+              head,
+              message: committed ? message : '(변경 없음 — 기존 커밋만 푸시)',
+              output: (push.stderr || push.stdout).trim(),
+            })
           }
 
           return send(404, { error: '알 수 없는 요청' })

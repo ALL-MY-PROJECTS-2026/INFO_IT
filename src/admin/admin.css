@@ -2,11 +2,69 @@
   padding-top: 2rem;
   max-width: 960px;
 }
+.admin__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
 .admin__head h1 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   flex-wrap: wrap;
+  margin: 0;
+}
+/* 우측 상단 커밋·배포 버튼 묶음 */
+.admin__deploy {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.admin__deploy-msg {
+  height: 34px;
+  min-width: 180px;
+  padding: 0 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 0.85rem;
+  background: var(--surface-2);
+  color: var(--text);
+}
+.admin__deploy-btn {
+  height: 34px;
+  padding: 0 0.95rem;
+  border: none;
+  border-radius: 7px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: filter var(--dur) var(--ease), opacity var(--dur) var(--ease);
+}
+.admin__deploy-btn:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.admin__deploy-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+.admin__deploy-status {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  flex-basis: 100%;
+  text-align: right;
+}
+.admin__deploy-status.ok {
+  color: #1a7f37;
+}
+.admin__deploy-status.err {
+  color: #b42318;
 }
 .admin__badge {
   font-size: 0.7rem;

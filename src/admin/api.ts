@@ -31,4 +31,13 @@ export const adminApi = {
   listMedia: () => req('GET', '/media') as Promise<{ items: string[] }>,
   uploadMedia: (filename: string, dataUrl: string) =>
     req('POST', '/media', { filename, dataUrl }) as Promise<{ path: string }>,
+  gitPush: (message?: string) =>
+    req('POST', '/git', { message }) as Promise<{
+      ok: boolean
+      committed: boolean
+      pushed: boolean
+      head: string
+      message: string
+      output?: string
+    }>,
 }

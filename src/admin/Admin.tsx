@@ -24,6 +24,58 @@ function toLocalDateTimeInput(raw: string): string {
 }
 
 /**
+ * 우측 상단 '커밋 · 배포' 버튼.
+ * localhost 미들웨어(/__admin/api/git)가 git add·commit·push 를 실행 →
+ * GitHub Actions 가 자동 빌드·배포하여 라이브(글 포함)에 반영된다.
+ */
+function GitDeployButton() {
+  const [busy, setBusy] = useState(false)
+  const [status, setStatus] = useState('')
+  const [ok, setOk] = useState<boolean | null>(null)
+  const [msg, setMsg] = useState('')
+
+  const run = async () => {
+    if (busy) return
+    setBusy(true)
+    setOk(null)
+    setStatus('커밋·푸시 중…')
+    try {
+      const r = await adminApi.gitPush(msg.trim() || undefined)
+      setOk(true)
+      setStatus(
+        r.committed
+          ? `✅ 배포 시작됨 (${r.head}) — 2~3분 뒤 라이브 반영`
+          : `✅ 변경 없음 · 기존 커밋 푸시됨 (${r.head})`,
+      )
+      setMsg('')
+    } catch (e) {
+      setOk(false)
+      setStatus('❌ ' + (e as Error).message)
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  return (
+    <div className="admin__deploy">
+      <input
+        className="admin__deploy-msg"
+        value={msg}
+        onChange={(e) => setMsg(e.target.value)}
+        placeholder="커밋 메시지 (선택)"
+        disabled={busy}
+      />
+      <button className="admin__deploy-btn" onClick={run} disabled={busy}>
+        {busy ? '⏳ 배포 중…' : '🚀 커밋 · 배포'}
+      </button>
+      {status && (
+        <span className={`admin__deploy-status ${ok === false ? 'err' : ok ? 'ok' : ''}`}>{status}</span>
+      )}
+    </div>
+  )
+}
+
+/**
  * localhost 전용 관리자 패널. src/content 의 site.json·pages·posts 를 CRUD.
  * import.meta.env.DEV 에서만 라우팅되며 프로덕션 번들엔 포함되지 않는다.
  */
@@ -38,6 +90,7 @@ export default function Admin() {
         <h1>
           🔧 관리자 모드 <span className="admin__badge">localhost 전용</span>
         </h1>
+        <GitDeployButton />
       </div>
       <div className="admin__note">
         여기서 편집 → <b>저장</b>하면 <code>src/content/</code> 파일에 기록됩니다(화면 즉시 갱신).
