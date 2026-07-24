@@ -84,13 +84,13 @@ export default function Sidebar() {
     <aside className="sidebar">
       <nav className="cat-nav" aria-label="카테고리">
         {stats && (
-          <Link to="/stats" className="sidebar-stats" title="방문 통계 자세히 보기">
+          <div className="sidebar-stats" title="약 3시간마다 갱신됩니다">
             <span className="sidebar-stats__row">
               오늘 <b>{(stats.daily ?? 0).toLocaleString('ko-KR')}</b>
               <span className="sidebar-stats__sep">·</span>
               누적 <b>{(stats.total ?? 0).toLocaleString('ko-KR')}</b>
             </span>
-          </Link>
+          </div>
         )}
         <div className="sidebar__title">카테고리</div>
 

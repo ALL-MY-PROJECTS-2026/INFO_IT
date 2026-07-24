@@ -829,18 +829,18 @@ a:hover {
   padding: 0 0.7rem;
   margin-bottom: 0.6rem;
 }
-/* 방문 통계(오늘/누적) — 사이드바 맨 위, 은은하게 한 줄 */
+/* 방문 통계(오늘/누적) — 사이드바 맨 위, 은은하게 한 줄. 클릭 아님(마우스오버 시 갱신주기 툴팁) */
 .sidebar-stats {
   display: block;
   padding: 0 0.7rem;
   margin-bottom: 0.9rem;
   font-size: 0.72rem;
   color: var(--text-faint);
+  cursor: help; /* 툴팁이 있음을 알림 */
   transition: color var(--dur) var(--ease);
 }
 .sidebar-stats:hover {
   color: var(--text-muted);
-  text-decoration: none;
 }
 .sidebar-stats__row {
   display: inline-flex;
