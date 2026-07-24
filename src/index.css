@@ -63,6 +63,26 @@
   color-scheme: dark;
 }
 
+/* --- 보호(sepia) 모드: 파란빛·눈부심을 줄인 따뜻한 크림 화면 --- */
+:root[data-theme='sepia'] {
+  --bg: #f3e9d5;
+  --bg-subtle: #ecdfc6;
+  --surface: #f7f0dd;
+  --surface-2: #eadfc4;
+  --border: #dccda9;
+  --text: #40372a; /* 순수 검정 대신 따뜻한 진갈색(대비는 충분, 눈부심 완화) */
+  --text-muted: #6a5c45;
+  --text-faint: #8a7b60;
+  --accent: #0c6b62;
+  --accent-hover: #0a544d;
+  --accent-bright: #12a99c;
+  --accent-contrast: #fdfaf1;
+  --code-bg: #ece0c4;
+  --shadow: 0 1px 2px rgba(90, 70, 30, 0.06), 0 4px 16px rgba(90, 70, 30, 0.1);
+
+  color-scheme: light;
+}
+
 /* --- 리셋 --- */
 *,
 *::before,
