@@ -24,10 +24,14 @@ function frontmatter(text) {
   return fm
 }
 
-// "YYYY-MM-DD" → 로컬 자정, "YYYY-MM-DDTHH:MM" → 그 시각(로컬)으로 파싱해 로컬 now 와 비교.
+// 글 날짜는 KST(Asia/Seoul, +09:00) 기준으로 작성된다고 간주하고 파싱한다.
+// (빌드는 GitHub 러너=UTC 에서 도는데, 로컬 파싱을 쓰면 KST 오전 시각이 UTC 기준
+//  '미래'로 잡혀 배포가 잘못 차단된다. +09:00 을 명시해 러너 TZ 와 무관하게 비교.)
+// "YYYY-MM-DD" → KST 자정, "YYYY-MM-DDTHH:MM" → 그 시각(KST).
 function toDate(s) {
   const hasTime = /[T ]\d{2}:\d{2}/.test(s)
-  return new Date(hasTime ? s.replace(' ', 'T') : s + 'T00:00:00')
+  const iso = hasTime ? s.replace(' ', 'T') : s + 'T00:00:00'
+  return new Date(iso + '+09:00')
 }
 
 if (!existsSync(postsDir)) {

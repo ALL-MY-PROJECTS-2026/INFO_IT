@@ -480,9 +480,21 @@ a:hover {
 .prose li {
   color: var(--text);
 }
-.prose ul,
-.prose ol {
-  padding-left: 1.4em;
+/* 본문 강조: 플레인 볼드 대신 '굵기 + 액센트 색 + 약간 크게'로 눈에 띄게.
+   (핵심 어구에만 절제해서 쓰는 것을 전제로 함 — 남발하면 오히려 안 보인다) */
+.prose strong,
+.prose b {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1.05em;
+  letter-spacing: -0.01em;
+}
+/* 표·콜아웃(blockquote) 안에서는 색만(크기는 그대로) — 레이아웃 흔들림 방지 */
+.prose table strong,
+.prose table b,
+.prose blockquote strong,
+.prose blockquote b {
+  font-size: 1em;
 }
 .prose li + li {
   margin-top: 0.4em;
